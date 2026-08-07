@@ -62,3 +62,5 @@ frontend-admin/
 ## Licença
 
 Este projeto está licenciado sob a licença MIT.
+
+Projeto em desenvolvimento.
