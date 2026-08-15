@@ -1,37 +1,72 @@
 # FRONTEND_ROADMAP.md
 
-# Projeto
+# Template Flask — Roadmap, Diário de Aprendizagem e Base de Conhecimento
 
-**Template Administrativo para Sistemas Flask**
+## 1. Finalidade deste documento
+
+O `FRONTEND_ROADMAP.md` registra a **evolução do projeto e do aprendizado**.
+
+Ele funciona simultaneamente como:
+
+- Roadmap;
+- Diário de Aprendizagem;
+- Base de Conhecimento.
+
+Este documento registra:
+
+- etapas concluídas;
+- etapa atual;
+- próximas etapas;
+- conceitos aprendidos;
+- componentes desenvolvidos;
+- padrões adotados;
+- boas práticas;
+- decisões relevantes para a evolução do projeto.
+
+### Governança documental
+
+O projeto possui três documentos oficiais, cada um com responsabilidade própria:
+
+```text
+CONTEXTO_PROJETO.md
+→ arquitetura, princípios, metodologia e regras permanentes
+
+ESTADO_ATUAL.md
+→ situação concreta do projeto, arquivos, componentes, pendências e próxima etapa
+
+FRONTEND_ROADMAP.md
+→ evolução, aprendizagem, roadmap e histórico relevante
+```
+
+O Roadmap **não deve duplicar detalhadamente** o estado atual dos arquivos ou as regras arquiteturais permanentes já registradas nos outros documentos.
 
 ---
 
-# Objetivo Geral
+# 2. Objetivo Geral
 
-Construir um template administrativo moderno, reutilizável e responsivo
-utilizando:
+Construir um template administrativo moderno, reutilizável e responsivo para sistemas Flask.
 
-- HTML5
-- CSS3
-- JavaScript (ES2023+)
+A primeira implementação será desenvolvida utilizando:
 
-Após a conclusão, reconstruiremos todo o projeto utilizando Bootstrap
-5.3+, comparando cada abstração com a implementação em código puro.
+- HTML5;
+- CSS3;
+- JavaScript ES2023+.
 
-O objetivo é criar uma base reutilizável para sistemas Flask como:
+Após a conclusão do sistema em código puro, o mesmo projeto será reconstruído utilizando Bootstrap 5.3+.
 
-- LicenSys
-- Sistema Financeiro
-- Sistema Pericial
-- Controle Patrimonial
-- Controle de Processos
-- futuros sistemas administrativos
+O objetivo da segunda implementação será compreender:
+
+- o que o Bootstrap abstrai;
+- quais componentes oferece;
+- quando utilizar suas abstrações;
+- quando desenvolver componentes próprios;
+- como migrar uma interface feita em HTML/CSS puro para Bootstrap.
 
 ---
 
-# Metodologia
+# 3. Metodologia de Aprendizagem
 
-Cada etapa seguirá a sequência:
+Cada etapa seguirá, sempre que aplicável:
 
 1. Objetivo
 2. Conceitos
@@ -43,194 +78,578 @@ Cada etapa seguirá a sequência:
 8. Fixação
 9. Resumo
 
-Avançaremos para a próxima etapa apenas após a validação da etapa atual.
+Uma etapa somente será considerada concluída após:
 
-Durante as implementações práticas, o código será construído de forma
-guiada: primeiro será apresentada a especificação da implementação,
-depois o usuário implementará e enviará o resultado para revisão.
+- implementação;
+- validação visual;
+- revisão técnica;
+- revisão arquitetural;
+- resolução ou registro das pendências relevantes.
+
+Antes da implementação, a especificação deverá ser apresentada de forma objetiva.
+
+Sempre que útil, as propriedades deverão ser apresentadas em formato semelhante a:
+
+```text
+body
+→ Inter
+→ 1rem
+→ weight 400
+→ line-height 1.5
+```
 
 ---
 
-# Arquitetura do Projeto
+# 4. Visão do Roadmap
 
-## Fase 0 --- Identidade Visual
+```text
+Fase 0
+→ Identidade Visual
 
-- [x] Visão geral
-- [x] Layouts principais
-- [x] Componentes
+Fase 1
+→ Fundação
+
+    1.0
+    → Estrutura inicial
+
+    1.1
+    → Design System Base
+
+    1.2
+    → Primeiro HTML e Layout Base
+        1.2.1 → Estrutura Visual do Layout Base
+        1.2.2 → Dimensões e Superfícies
+        1.2.3 → Sidebar: Estrutura e Navegação
+        1.2.4 → Sidebar: Ícones e Estados de Navegação
+        ...
+
+Fase 2
+→ Layout
+
+Fase 3
+→ Dashboard
+
+Fase 4
+→ Formulários
+
+Fase 5
+→ CRUD
+
+Fase 6
+→ Componentes
+
+Fase 7
+→ Telas
+
+Fase 8
+→ Refatoração e preparação para Flask
+
+Fase 9
+→ Bootstrap
+```
+
+---
+
+# 5. Fase 0 — Identidade Visual
+
+## Status
+
+**Concluída e aprovada.**
+
+## Objetivos concluídos
+
+- [x] Visão geral do sistema
+- [x] Definição dos layouts principais
+- [x] Definição dos principais componentes
 - [x] Paleta de cores
 - [x] Tipografia
-- [x] Ícones
-- [x] Responsividade
+- [x] Biblioteca de ícones
+- [x] Estratégia de responsividade
 
-**Status:** concluída e aprovada.
+## Identidade consolidada
 
-### Identidade Visual Consolidada
+Características:
 
-- Estilo moderno, minimalista, corporativo e atemporal.
-- Interface voltada para sistemas administrativos.
-- Tema inicial claro.
-- Abordagem Desktop First, com responsividade para notebook, tablet e smartphone.
-- Tipografia principal: Inter.
-- Biblioteca de ícones definida: Bootstrap Icons.
-- Paleta visual enxuta, baseada em azul primário, neutros e cores semânticas.
+- moderna;
+- limpa;
+- profissional;
+- minimalista;
+- corporativa;
+- voltada para sistemas administrativos.
 
-### Paleta Principal
-
-- Primária: `#2563EB`
-- Primária Hover: `#1D4ED8`
-- Sucesso: `#16A34A`
-- Atenção: `#F59E0B`
-- Erro: `#DC2626`
-- Fundo: `#F8FAFC`
-- Superfície: `#FFFFFF`
-- Borda: `#E5E7EB`
-- Texto principal: `#111827`
-- Texto secundário: `#6B7280`
-- Branco: `#FFFFFF`
+A identidade será reutilizada em futuros sistemas Flask.
 
 ---
 
-## Fase 1 --- Fundação
+# 6. Fase 1 — Fundação
 
-### Etapa 1.0 --- Estrutura inicial
+## Status
 
-- [x] Estrutura de pastas
-- [x] `index.html` criado como arquivo inicial
-- [x] `assets/css/base/`
-- [x] `assets/css/components/`
-- [x] `assets/css/layout/`
-- [x] `assets/css/pages/`
-- [x] `assets/js/`
-- [x] `assets/images/`
-- [x] `assets/icons/`
-- [x] `assets/fonts/`
-- [x] `pages/`
+**Em andamento.**
 
-**Status:** concluída e aprovada.
+---
 
-### Etapa 1.1 --- Design System Base
+## 6.1 Etapa 1.0 — Estrutura Inicial
 
-- [x] Variáveis CSS
-- [x] Escala de espaçamento
-- [x] Tipografia
-- [x] Reset CSS
-- [x] `main.css`
+### Status
 
-**Status:** concluída e aprovada.
+**Concluída e aprovada.**
 
-### Etapa 1.1.1 --- Variáveis CSS
+### Conteúdos consolidados
+
+Foi criada a estrutura inicial do projeto, incluindo:
+
+```text
+assets/
+├── css/
+│   ├── base/
+│   ├── components/
+│   ├── layout/
+│   └── pages/
+├── fonts/
+├── icons/
+├── images/
+└── js/
+
+pages/
+```
+
+Também foram estabelecidos:
+
+- `index.html`;
+- `main.css`;
+- organização inicial dos arquivos CSS;
+- separação entre fundamentos, layout e componentes.
+
+---
+
+# 7. Etapa 1.1 — Design System Base
+
+## Status
+
+**Concluída e aprovada.**
+
+A etapa consolidou os fundamentos visuais necessários para começar a construção dos componentes.
+
+---
+
+## 7.1 Etapa 1.1.1 — Variáveis CSS
+
+### Conceitos aprendidos
+
+- CSS Custom Properties;
+- Design Tokens;
+- centralização de valores;
+- reutilização de cores;
+- separação entre valor e aplicação.
+
+### Tokens consolidados
 
 Foram definidos tokens para:
 
-- cores;
-- estados semânticos;
-- fundo e superfície;
-- bordas;
-- textos.
+- cor primária;
+- estado hover;
+- sucesso;
+- atenção;
+- erro;
+- background;
+- superfície;
+- borda;
+- texto principal;
+- texto secundário;
+- texto branco.
 
-### Etapa 1.1.2 --- Escala de espaçamento
+### Observação
 
-Escala adotada com `rem`:
+O projeto possui atualmente o token:
 
-- `--space-1: 0.25rem`
-- `--space-2: 0.5rem`
-- `--space-3: 0.75rem`
-- `--space-4: 1rem`
-- `--space-5: 1.25rem`
-- `--space-6: 1.5rem`
-- `--space-8: 2rem`
-- `--space-10: 2.5rem`
-- `--space-12: 3rem`
-- `--space-16: 4rem`
+```text
+--color-sucess
+```
 
-A variável `--space-7` foi avaliada e não faz parte da escala oficial.
+Essa nomenclatura foi mantida conforme o estado existente e não deve ser alterada sem decisão específica.
 
-### Etapa 1.1.3 --- Tipografia
+---
 
-Escala tipográfica consolidada:
+## 7.2 Etapa 1.1.2 — Escala de Espaçamento
 
-- `body` → Inter → `1rem` → weight `400` → line-height `1.5`
-- `h1` → `2rem` → weight `700` → line-height `1.2`
-- `h2` → `1.5rem` → weight `600` → line-height `1.2`
-- `h3` → `1.25rem` → weight `600` → line-height `1.2`
-- `h4` → `1.125rem` → weight `600` → line-height `1.2`
-- `.text-small` → `0.875rem` → line-height `1.5`
-- `.text-caption` → `0.75rem` → line-height `1.5`
+### Conceitos aprendidos
 
-Pesos adotados:
+- escala de espaçamento;
+- uso de `rem`;
+- relação entre `rem` e pixels;
+- reutilização de valores;
+- Design Tokens aplicados a espaçamentos.
 
-- `400` --- Regular
-- `500` --- Medium
-- `600` --- Semibold
-- `700` --- Bold
+### Escala consolidada
 
-Line-heights iniciais:
+```text
+--space-1  → 0.25rem
+--space-2  → 0.5rem
+--space-3  → 0.75rem
+--space-4  → 1rem
+--space-5  → 1.25rem
+--space-6  → 1.5rem
+--space-8  → 2rem
+--space-10 → 2.5rem
+--space-12 → 3rem
+--space-16 → 4rem
+```
 
-- `1.2` --- títulos
-- `1.5` --- texto comum
-- `1.6` --- textos mais longos, quando necessário
+A escala é utilizada progressivamente nos componentes.
 
-### Etapa 1.1.4 --- Reset CSS
+---
 
-Reset inicial consolidado para:
+## 7.3 Etapa 1.1.3 — Tipografia
 
-- `box-sizing: border-box`;
-- margem do `body`;
-- margens de títulos e parágrafos;
+### Conceitos aprendidos
+
+- `font-family`;
+- `font-size`;
+- `font-weight`;
+- `line-height`;
+- hierarquia tipográfica;
+- escala de pesos.
+
+### Escala consolidada
+
+```text
+body
+→ Inter
+→ 1rem
+→ weight 400
+→ line-height 1.5
+
+h1
+→ 2rem
+→ weight 700
+→ line-height 1.2
+
+h2
+→ 1.5rem
+→ weight 600
+→ line-height 1.2
+
+h3
+→ 1.25rem
+→ weight 600
+→ line-height 1.2
+
+h4
+→ 1.125rem
+→ weight 600
+→ line-height 1.2
+
+.text-small
+→ 0.875rem
+→ line-height 1.5
+
+.text-caption
+→ 0.75rem
+→ line-height 1.5
+```
+
+### Pesos consolidados
+
+```text
+400 → Regular
+500 → Medium
+600 → Semibold
+700 → Bold
+```
+
+---
+
+## 7.4 Etapa 1.1.4 — Reset CSS
+
+### Conceitos aprendidos
+
+- comportamento padrão do navegador;
+- `box-sizing`;
+- margens padrão;
 - listas;
-- herança de fonte em controles de formulário;
-- comportamento básico de imagens.
+- controles de formulário;
+- imagens;
+- herança de fonte.
+
+### Decisão
 
 Não foi adotado `scroll-behavior: smooth` globalmente.
 
-### Etapa 1.1.5 --- `main.css`
-
-`main.css` foi definido como ponto de entrada do CSS e importa, nesta ordem:
-
-1. `reset.css`
-2. `variables.css`
-3. `typography.css`
-
-**Status:** concluída e revisada.
+O reset permanece objetivo e sem comportamentos não necessários.
 
 ---
 
-## Etapa 1.2 --- Primeiro HTML e Layout Base
+## 7.5 Etapa 1.1.5 — `main.css`
 
-- [ ] Estrutura semântica inicial do `index.html`
-- [ ] Conexão do HTML com `main.css`
-- [ ] Validação visual da fundação
-- [ ] Estrutura inicial do Layout Base
-- [ ] Preparação para Sidebar e Navbar
+### Status
 
-**Status:** próxima etapa oficial.
+**Concluída, revisada e validada.**
+
+`main.css` foi estabelecido como ponto de entrada do CSS.
+
+A organização segue a progressão:
+
+```text
+Base
+↓
+Layout
+↓
+Components
+```
 
 ---
 
-## Fase 2 --- Layout
+# 8. Etapa 1.2 — Primeiro HTML e Layout Base
 
-- [ ] Sidebar
+## Status
+
+**Em andamento.**
+
+Esta etapa iniciou a transformação dos fundamentos em uma interface administrativa real.
+
+---
+
+## 8.1 Etapa 1.2.1 — Estrutura Visual do Layout Base
+
+### Status
+
+**Concluída e aprovada.**
+
+### Conceitos aprendidos
+
+- CSS Grid;
+- Grid Container;
+- Grid Item;
+- `grid-template-columns`;
+- unidade `fr`;
+- combinação entre Grid e Flexbox;
+- Flex Container;
+- Flex Item;
+- `flex-direction: column`;
+- `min-height: 100vh`;
+- `min-width: 0`.
+
+### Estrutura conceitual consolidada
+
+```text
+.app
+│
+├── aside
+│
+└── .app__content
+    ├── header
+    └── main
+```
+
+### Aprendizado principal
+
+O Grid passou a ser utilizado para estruturar as áreas principais da aplicação:
+
+```text
+240px + 1fr
+```
+
+Enquanto o Flexbox passou a organizar verticalmente o conteúdo da área principal.
+
+---
+
+# 9. Etapa 1.2.2 — Dimensões e Superfícies
+
+## Status
+
+**Concluída e aprovada.**
+
+### Conceitos aprendidos
+
+- dimensões de regiões;
+- `rem`;
+- `vh`;
+- superfícies;
+- backgrounds;
+- bordas estruturais;
+- `flex: 1`;
+- distribuição do espaço disponível.
+
+### Decisões consolidadas
+
+A Sidebar permanece com `240px` por responsabilidade do Grid.
+
+O `main` utiliza `flex: 1` para ocupar o espaço vertical restante.
+
+As superfícies utilizam os Design Tokens existentes.
+
+### Aprendizado principal
+
+Foi consolidada a diferença entre:
+
+```text
+Grid
+→ estrutura e dimensionamento das colunas
+
+Flexbox
+→ distribuição e alinhamento em uma dimensão
+```
+
+---
+
+# 10. Etapa 1.2.3 — Sidebar: Estrutura e Navegação
+
+## Status
+
+**Concluída e aprovada.**
+
+### Objetivo alcançado
+
+Transformar o `<aside>` provisório em um componente administrativo estruturado.
+
+### Estrutura conceitual
+
+```text
+.sidebar
+│
+├── .sidebar__brand
+│
+├── .sidebar__nav
+│   └── .sidebar__section
+│       ├── .sidebar__section-title
+│       └── .sidebar__link × 4
+│
+└── .sidebar__footer
+    └── .sidebar__link
+```
+
+### Conteúdo provisório
+
+```text
+Template Flask
+Principal
+Dashboard
+Empresas
+Licenças
+Relatórios
+Configurações
+```
+
+### Conceitos aprendidos
+
+- `<aside>`;
+- `<nav>`;
+- `<a>`;
+- semântica de navegação;
+- BEM pragmático;
+- separação entre Layout e Componentes;
+- criação de `components/sidebar.css`;
+- Flexbox vertical;
+- `margin-top: auto`;
+- `gap`;
+- `align-items`;
+- Flexbox em diferentes níveis.
+
+### Insight importante sobre Flexbox
+
+Foi consolidada a diferença entre:
+
+```text
+.sidebar
+→ organiza Brand / Nav / Footer
+```
+
+e:
+
+```text
+.sidebar__link
+→ organiza o conteúdo interno do link
+→ futuramente: ícone + texto
+```
+
+O `.sidebar__section` não recebeu Flexbox porque o fluxo normal do HTML já resolve o empilhamento dos links neste momento.
+
+### Decisões relevantes
+
+- A largura da Sidebar continua sendo responsabilidade do Grid.
+- Não foi adicionada largura redundante ao `aside`.
+- A Sidebar passou a possuir arquivo próprio em `components/sidebar.css`.
+- Os links utilizam `<a>`, preparando a futura integração com `url_for()`.
+- Ícones e estados de interação foram deliberadamente adiados para a etapa seguinte.
+- O pequeno desalinhamento entre `sidebar__brand` e `header` foi mantido para ser tratado durante a construção da Navbar.
+
+---
+
+# 11. Próxima Etapa Oficial
+
+## Fase 1.2.4 — Sidebar: Ícones e Estados de Navegação
+
+### Status
+
+**Próxima etapa.**
+
+### Objetivo
+
+Evoluir a Sidebar estrutural para uma navegação visualmente completa.
+
+### Conteúdos previstos
+
+- Bootstrap Icons;
+- ícone + texto;
+- alinhamento;
+- estado ativo;
+- `:hover`;
+- `:focus-visible`;
+- modificadores BEM;
+- feedback visual;
+- acessibilidade básica.
+
+### Conceitos para revisão
+
+```text
+Flexbox
+→ display: flex
+→ align-items
+→ gap
+
+Pseudo-classes
+→ :hover
+→ :focus-visible
+
+BEM
+→ Block
+→ Element
+→ Modifier
+
+Acessibilidade
+→ foco
+→ teclado
+→ semântica de links
+```
+
+---
+
+# 12. Próximas Fases
+
+## Fase 2 — Layout
+
+- [ ] Sidebar — consolidação posterior
 - [ ] Navbar
 - [ ] Área principal
 - [ ] Breadcrumb
 
-## Fase 3 --- Dashboard
+## Fase 3 — Dashboard
 
 - [ ] Cards
 - [ ] KPIs
-- [ ] Gráficos (integração visual)
+- [ ] Gráficos
 - [ ] Alertas
 
-## Fase 4 --- Formulários
+## Fase 4 — Formulários
 
 - [ ] Inputs
 - [ ] Selects
 - [ ] Checkboxes
-- [ ] Radios
-- [ ] Upload
+- [ ] Radio Buttons
+- [ ] Upload de Arquivos
 
-## Fase 5 --- CRUD
+## Fase 5 — CRUD
 
 - [ ] Tabelas
 - [ ] Pesquisa
@@ -238,7 +657,7 @@ Não foi adotado `scroll-behavior: smooth` globalmente.
 - [ ] Paginação
 - [ ] Ações
 
-## Fase 6 --- Componentes
+## Fase 6 — Componentes
 
 - [ ] Modais
 - [ ] Offcanvas
@@ -247,231 +666,253 @@ Não foi adotado `scroll-behavior: smooth` globalmente.
 - [ ] Dropdowns
 - [ ] Wizards
 
-## Fase 7 --- Telas
+## Fase 7 — Telas
 
 - [ ] Login
-- [ ] Recuperação de senha
+- [ ] Recuperação de Senha
 - [ ] Cadastro
 - [ ] Perfil
 - [ ] Configurações
 - [ ] Estados de erro
 
-## Fase 8 --- Refatoração
+## Fase 8 — Refatoração e Preparação para Flask
 
-- [ ] Componentização
+- [ ] Componentização final
 - [ ] Organização final
-- [ ] Preparação para Flask
+- [ ] Preparação dos templates
+- [ ] Preparação dos arquivos estáticos
+- [ ] Integração conceitual com Jinja2
+- [ ] Preparação para Blueprints
 
-## Fase 9 --- Bootstrap
+## Fase 9 — Bootstrap
 
-- [ ] Migração completa
-- [ ] Comparação entre abordagens
+- [ ] Reconstrução completa com Bootstrap 5.3+
+- [ ] Comparação com CSS puro
+- [ ] Análise das abstrações
+- [ ] Avaliação de componentes próprios x Bootstrap
 - [ ] Ajustes finais
 
 ---
 
-# Diário de Aprendizagem
+# 13. Diário de Aprendizagem
 
-## Etapas Concluídas
+## Principais conhecimentos consolidados
 
-### Fase 0 --- Identidade Visual
+### Design System
 
-Foi definida e aprovada a identidade visual do template:
-
-- estilo moderno, minimalista e corporativo;
-- paleta de cores;
-- tipografia;
-- biblioteca de ícones;
-- estratégia de responsividade;
-- referência visual para dashboards, CRUDs e formulários.
-
-### Fase 1.1 --- Design System Base
-
-Foram aprendidos e implementados:
-
-- CSS Custom Properties;
 - Design Tokens;
+- Custom Properties;
 - escala de espaçamento;
-- unidades `rem`;
 - escala tipográfica;
-- `font-weight`;
-- `line-height`;
-- herança de propriedades CSS;
-- Reset CSS;
-- `box-sizing: border-box`;
-- `font: inherit`;
+- cores semânticas;
+- reutilização de valores.
+
+### HTML
+
+- HTML5;
+- semântica;
+- estrutura hierárquica;
+- `<aside>`;
+- `<nav>`;
+- `<a>`;
+- preparação para templates.
+
+### CSS
+
+- Reset;
+- `box-sizing`;
+- `rem`;
+- `vh`;
 - `@import`;
-- caminhos relativos em CSS;
-- organização do `main.css`.
+- organização por arquivos;
+- separação de responsabilidades.
+
+### Grid
+
+- Grid Container;
+- Grid Item;
+- `grid-template-columns`;
+- `fr`;
+- coluna fixa + coluna flexível.
+
+### Flexbox
+
+- Flex Container;
+- Flex Item;
+- `display: flex`;
+- `flex-direction`;
+- `align-items`;
+- `gap`;
+- `flex: 1`;
+- `margin-top: auto`.
+
+### Arquitetura
+
+- separação Base / Layout / Components;
+- ITCSS pragmático;
+- BEM pragmático;
+- responsabilidade única;
+- evitar duplicação de regras;
+- evitar complexidade prematura.
 
 ---
 
-# Padrões do Projeto
+# 14. Padrões Aprendidos
 
-- HTML semântico.
-- CSS organizado por responsabilidade.
-- JavaScript modular e objetivo.
-- Componentes reutilizáveis.
-- Layout preparado para Jinja2.
-- Estrutura compatível com Flask.
-- Design Tokens centralizados em `variables.css`.
-- Reset controlado, evitando regras desnecessárias.
-- Uso de `rem` para espaçamento e tipografia.
-- `main.css` como ponto de entrada do CSS.
-- Componentes serão construídos de forma incremental e revisados antes do avanço.
+## Não repetir responsabilidades
 
----
-
-# Arquitetura CSS
-
-O projeto adotará uma abordagem pragmática combinando conceitos de diferentes metodologias.
-
-## ITCSS --- princípios adotados
-
-Serão utilizados principalmente:
-
-- organização por camadas;
-- separação entre fundamentos, layout, componentes e páginas;
-- regras gerais antes das específicas;
-- controle de especificidade;
-- organização do CSS do mais geral para o mais específico.
-
-A estrutura atual é:
+Exemplo:
 
 ```text
-css/
-├── base/
-├── layout/
-├── components/
-├── pages/
-└── main.css
+Grid
+→ define 240px da Sidebar
 ```
 
-Não será adotada uma implementação rígida de todas as camadas formais do ITCSS quando isso adicionar complexidade sem benefício para o projeto.
+Portanto não é necessário:
 
-## BEM --- uso pragmático
+```css
+aside {
+    width: 240px;
+}
+```
 
-BEM será utilizado principalmente para nomenclatura de componentes reutilizáveis:
+sem motivo adicional.
 
-- Blocks;
-- Elements;
-- Modifiers.
+---
 
-Exemplo conceitual:
+## Utilizar o fluxo normal quando suficiente
+
+Se o HTML já empilha os elementos corretamente, não adicionar Flexbox apenas para reproduzir o mesmo comportamento.
+
+---
+
+## Flexbox conforme o problema
 
 ```text
-card
-card__header
-card__body
-card--highlight
+.sidebar
+→ organiza áreas verticais
+
+.sidebar__link
+→ organiza conteúdo interno
+
+.app__content
+→ organiza Header + Main
 ```
 
-BEM será utilizado como orientação de nomenclatura, sem impedir soluções mais simples quando elas forem mais claras.
+---
+
+## Design Tokens
+
+Preferir:
+
+```css
+var(--space-4)
+```
+
+a:
+
+```css
+16px
+```
+
+quando existir token equivalente.
 
 ---
 
-# Convenções
+# 15. Histórico de Decisões de Implementação
 
-## CSS
+Até o momento foram consolidadas as seguintes decisões relevantes:
 
-- Variáveis CSS para tema e Design Tokens.
-- Flexbox e Grid quando apropriados.
-- Classes reutilizáveis.
-- Nomenclatura consistente.
-- Princípios de ITCSS.
-- BEM pragmático para componentes.
-- Evitar valores arbitrários quando existir um token adequado.
-- Evitar complexidade prematura.
-
-## JavaScript
-
-- ES2023+
-- Sem dependências desnecessárias.
-- Separação por responsabilidade.
-- JavaScript utilizado apenas quando agregar comportamento à interface.
-
-## HTML
-
-- HTML5 semântico.
-- Estrutura preparada para futura conversão em templates Jinja2.
-- Separação entre conteúdo, apresentação e comportamento.
+1. A primeira implementação será feita sem Bootstrap.
+2. Bootstrap será estudado somente após a conclusão da versão em CSS puro.
+3. O layout principal utiliza CSS Grid.
+4. Flexbox é utilizado quando o problema envolve distribuição em uma dimensão.
+5. A Sidebar possui largura de `240px` definida pelo Grid.
+6. A Sidebar é um componente separado em `components/sidebar.css`.
+7. A Sidebar utiliza BEM pragmático.
+8. Os links de navegação utilizam `<a>`.
+9. `href="#"` é apenas placeholder para a futura integração com Flask.
+10. `margin-top: auto` posiciona o Footer no final da Sidebar.
+11. `.sidebar__link` utiliza Flexbox para preparar a futura composição ícone + texto.
+12. Não foi adicionado Flexbox ao `.sidebar__section` porque o fluxo normal já atende à necessidade atual.
+13. Ícones e estados de navegação foram adiados para a Fase 1.2.4.
+14. O pequeno desalinhamento entre Sidebar e Navbar será revisitado durante a construção da Navbar.
 
 ---
 
-# Integração futura com Flask
+# 16. Integração com Flask — Aprendizados já estabelecidos
 
-Cada componente será posteriormente convertido para:
+O projeto está sendo desenvolvido de forma compatível com futura integração em Flask.
 
-- `templates/`
-- `static/css/`
-- `static/js/`
-- `includes/`
-- `macros/`
-- `base.html`
+Conceitos que já foram introduzidos conceitualmente:
 
-A estrutura está sendo construída desde o início para minimizar retrabalho durante a migração.
+```text
+HTML estático
+↓
+Jinja2
+↓
+templates
+↓
+base.html
+↓
+componentes reutilizáveis
+↓
+Blueprints
+↓
+url_for()
+```
 
----
-
-# Boas práticas
-
-- Reutilização acima de duplicação.
-- Responsividade desde o início.
-- Organização antes da complexidade.
-- Componentes independentes.
-- Código limpo e comentado apenas quando necessário.
-- Não assumir componentes, atributos ou regras sem necessidade.
-- Validar cada etapa antes de avançar.
-- Priorizar clareza e manutenção futura.
-- Evitar decisões prematuras de implementação.
-- Manter a identidade visual consistente em todo o template.
+A implementação da integração será realizada somente quando o objetivo do projeto justificar essa transição.
 
 ---
 
-# Status Atual
+# 17. Status Atual
 
-**Fase 0 --- Identidade Visual:** concluída.
+```text
+Fase 0
+→ ✅ Concluída
 
-**Fase 1.0 --- Estrutura inicial:** concluída.
+Fase 1.0
+→ ✅ Concluída
 
-**Fase 1.1 --- Design System Base:** concluída.
+Fase 1.1
+→ ✅ Concluída
 
-**Fase 1.1.5 --- `main.css`:** concluída e validada.
+Fase 1.2.1
+→ ✅ Concluída
 
-**Fase 1.2 --- Primeiro HTML e Layout Base:** próxima etapa oficial.
+Fase 1.2.2
+→ ✅ Concluída
+
+Fase 1.2.3
+→ ✅ Concluída
+
+Fase 1.2.4
+→ ▶ Próxima
+```
 
 ---
 
-# Próxima Etapa
+# 18. Próximo Marco de Aprendizagem
 
-**Fase 1.2 --- Primeiro HTML e Layout Base**
+O próximo marco será a evolução da Sidebar para um componente com interação visual.
 
-## Objetivo
+A próxima etapa deverá demonstrar, na prática:
 
-Criar o primeiro `index.html` funcional, conectar o documento ao `main.css` e validar no navegador a fundação construída nas etapas anteriores.
+```text
+HTML
++
+CSS
++
+Flexbox
++
+BEM
++
+Ícones
++
+Estados
++
+Acessibilidade
+```
 
-A etapa também iniciará a estrutura semântica do Layout Base que posteriormente receberá:
-
-- Sidebar;
-- Navbar;
-- Área principal;
-- Breadcrumb;
-- conteúdo das páginas.
-
-## Conceitos a revisar antes de continuar
-
-- Estrutura básica de um documento HTML5.
-- `<!DOCTYPE html>`.
-- `<html lang="pt-BR">`.
-- `<head>` e `<body>`.
-- `<meta charset="UTF-8">`.
-- `<meta name="viewport">`.
-- `<title>`.
-- `<link rel="stylesheet">`.
-- Caminhos relativos.
-- Elementos semânticos HTML5.
-- Relação entre HTML e CSS.
-- Herança CSS.
-- CSS Custom Properties.
-- `rem`.
-- `box-sizing`.
+A documentação deverá ser atualizada novamente após a conclusão e validação da Fase 1.2.4.
