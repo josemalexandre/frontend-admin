@@ -3,3 +3,4 @@
 @import "./base/typography.css";
 @import "./layout/app.css";
 @import "./components/sidebar.css";
+@import "./components/navbar.css";

@@ -1,5 +1,3 @@
-# ESTADO_ATUAL.md
-
 # Template Flask — Estado Atual
 
 ## 1. Estado Geral
@@ -8,9 +6,9 @@
 
 **Objetivo:** template administrativo/financeiro reutilizável para futuros sistemas Flask.
 
-**Implementação:** HTML5 + CSS3 puro.
+**Implementação atual:** HTML5 + CSS3 puro.
 
-**Bootstrap CSS:** ainda não utilizado.
+**Bootstrap CSS:** não utilizado.
 
 **Ícones:** Bootstrap Icons.
 
@@ -22,11 +20,11 @@
 
 **Subfase:** Fase 1.2 — Primeiro HTML e Layout Base
 
-**Última etapa concluída:** Fase 1.2.4 — Sidebar: Ícones e Estados de Navegação
+**Última etapa concluída:** Fase 1.2.5 — Navbar: Estrutura e Layout
 
-**Status:** concluída e validada.
+**Status:** concluída, revisada e validada.
 
-**Próxima etapa:** Fase 1.2.5 — Navbar: Estrutura e Layout
+**Próxima etapa:** Fase 1.2.6 — Consolidação da Área Principal.
 
 ## 3. Estrutura Atual
 
@@ -44,7 +42,8 @@
 │   │   │   ├── typography.css
 │   │   │   └── variables.css
 │   │   ├── components
-│   │   │   └── sidebar.css
+│   │   │   ├── sidebar.css
+│   │   │   └── navbar.css
 │   │   ├── layout
 │   │   │   └── app.css
 │   │   └── pages
@@ -57,40 +56,11 @@
 
 ## 4. Fundamentos
 
-### Variables
+### Design Tokens
 
-Cores:
+Cores e escala de espaçamento definidas em `variables.css`.
 
-```text
---color-primary
---color-primary-hover
---color-success
---color-warning
---color-error
---color-background
---color-surface
---color-border
---color-text-primary
---color-text-secondary
---color-white
-```
-
-Espaçamento:
-
-```text
---space-1
---space-2
---space-3
---space-4
---space-5
---space-6
---space-8
---space-10
---space-12
---space-16
-```
-
-### Typography
+### Tipografia
 
 ```text
 body
@@ -128,7 +98,7 @@ h4
 → line-height 1.5
 ```
 
-Reset implementado e validado. Não foi adotado `scroll-behavior: smooth` globalmente.
+Reset implementado e validado.
 
 `main.css` é o ponto de entrada do CSS.
 
@@ -150,31 +120,6 @@ flex-direction: column
 min-width: 0
 ```
 
-Organiza verticalmente:
-
-```text
-header
-↓
-main
-```
-
-### `aside`
-
-```text
-background: var(--color-surface)
-border-right: 1px solid var(--color-border)
-```
-
-### `header`
-
-Ainda é provisório, mas já possui:
-
-```text
-height: 4rem
-background: var(--color-surface)
-border-bottom: 1px solid var(--color-border)
-```
-
 ### `main`
 
 ```text
@@ -185,190 +130,139 @@ padding: var(--space-6)
 
 ## 6. Sidebar
 
-Arquivo:
-
-```text
-assets/css/components/sidebar.css
-```
-
-Status: **implementada, revisada e validada.**
+**Status:** implementada, revisada e validada.
 
 Estrutura:
 
 ```text
 .sidebar
-│
 ├── .sidebar__brand
 ├── .sidebar__nav
 │   └── .sidebar__section
 │       ├── .sidebar__section-title
-│       ├── .sidebar__link
-│       ├── .sidebar__link
-│       ├── .sidebar__link
-│       └── .sidebar__link
+│       └── .sidebar__link × 4
 └── .sidebar__footer
     └── .sidebar__link
 ```
 
-Conteúdo:
+Inclui:
 
-```text
-Template Flask
-Principal
-Dashboard
-Empresas
-Licenças
-Relatórios
-Configurações
-```
-
-## 7. Sidebar — Ícones
-
-Biblioteca: Bootstrap Icons.
-
-```text
-Dashboard → bi-speedometer2
-Empresas → bi-buildings
-Licenças → bi-file-earmark-text
-Relatórios → bi-bar-chart
-Configurações → bi-gear
-```
-
-Ícones decorativos utilizam:
-
-```html
-aria-hidden="true"
-```
-
-## 8. Sidebar — Estados
-
-Implementados:
-
-```text
-.sidebar__link
-.sidebar__link:hover
-.sidebar__link:focus-visible
-.sidebar__link--active
-.sidebar__link--active:hover
-```
-
-O Dashboard está ativo.
-
-O foco visível foi validado com navegação por teclado usando `Tab`.
-
-## 9. Conceitos consolidados na Fase 1.2.4
-
-- diferença entre estado normal e modificador BEM;
+- Bootstrap Icons;
+- estado ativo;
 - `:hover`;
 - `:focus-visible`;
-- estado ativo;
-- `aria-hidden="true"`;
 - navegação por teclado;
-- ícone + texto com Flexbox;
-- separação de responsabilidades entre Sidebar e links.
+- `aria-hidden="true"` nos ícones decorativos.
 
-## 10. Validação
+O Dashboard está inicialmente ativo.
 
-Resultado visual validado:
+## 7. Navbar
+
+**Arquivo:** `assets/css/components/navbar.css`
+
+**Status:** implementada, revisada e validada.
+
+Estrutura:
 
 ```text
-Dashboard
-→ ativo
-
-Relatórios
-→ foco visível
-
-Empresas / Licenças / Configurações
-→ normal
+.navbar
+├── .navbar__title
+└── .navbar__actions
+    └── span
 ```
 
-Os ícones foram carregados corretamente.
+Especificações:
 
-## 11. Decisões recentes
+```text
+.navbar
+→ display: flex
+→ align-items: center
+→ height: 4rem
+→ padding: 0 var(--space-6)
+→ background: var(--color-surface)
+→ border-bottom: 1px solid var(--color-border)
 
-1. Bootstrap CSS continua fora da primeira implementação.
-2. Bootstrap Icons pode ser utilizado independentemente do Bootstrap CSS.
-3. Ícones decorativos utilizam `aria-hidden="true"`.
-4. Dashboard representa inicialmente o item ativo.
-5. O estado ativo utiliza `sidebar__link--active`.
-6. `:focus-visible` fornece indicação visual de foco.
-7. O estado ativo possui comportamento próprio em `:hover`.
-8. Não foram criados tokens específicos para estados da Sidebar.
-9. Não foram criadas abstrações adicionais sem necessidade.
-10. O pequeno desalinhamento entre Sidebar e Navbar será analisado durante a construção da Navbar.
+.navbar__title
+→ 1.125rem
+→ weight 600
+→ color var(--color-text-primary)
 
-## 12. Pendências
+.navbar__actions
+→ display: flex
+→ align-items: center
+→ gap: var(--space-4)
+→ margin-left: auto
+```
 
-### Navbar
+A ação atual é um placeholder textual:
 
-Ainda provisória. Precisa receber:
-- estrutura;
-- dimensões;
-- alinhamento;
-- espaçamento;
-- áreas internas;
-- conteúdo;
-- estados necessários;
-- relação visual com Sidebar.
+```text
+Usuário
+```
 
-### Responsividade
+O alinhamento entre `sidebar__brand` e Navbar foi corrigido e validado visualmente, utilizando `4rem` como altura comum.
 
-Ainda não implementada de forma completa.
+## 8. `main.css`
 
-### JavaScript
+**Status:** revisado e validado.
 
-Ainda não implementado.
+Ordem:
 
-### Flask
+```text
+reset.css
+↓
+variables.css
+↓
+typography.css
+↓
+app.css
+↓
+sidebar.css
+↓
+navbar.css
+```
 
-Integração ainda não implementada. Os links continuam com `href="#"`.
+## 9. Pendências
 
-## 13. Próxima etapa oficial
+- consolidação da área principal;
+- responsividade completa;
+- JavaScript;
+- integração com Flask/Jinja2;
+- componentes e telas das fases posteriores.
 
-### Fase 1.2.5 — Navbar: Estrutura e Layout
+## 10. Próxima etapa
 
-Objetivo: transformar a Navbar provisória em componente estruturado e estabelecer sua relação visual com Sidebar e conteúdo principal.
+### Fase 1.2.6 — Consolidação da Área Principal
 
-Conteúdos:
+Objetivo:
+
+Preparar o `main` para receber o conteúdo real das futuras telas administrativas.
+
+Pontos previstos:
+
 - estrutura semântica;
-- Flexbox;
-- dimensões;
-- alinhamento;
+- hierarquia inicial;
 - espaçamento;
-- áreas internas;
-- `margin-left: auto`;
-- preparação para ações do usuário.
+- largura disponível;
+- relação entre `main` e `.app__content`;
+- preparação para Breadcrumb e Dashboard.
 
-Revisar:
-
-```text
-display: flex
-align-items
-justify-content
-gap
-margin-left: auto
-
-width
-height
-padding
-border
-```
-
-## 14. Status resumido
+## 11. Status
 
 ```text
-Fase 0 → ✅ Concluída
-Fase 1.0 → ✅ Concluída
-Fase 1.1 → ✅ Concluída
-Fase 1.2.1 → ✅ Concluída
-Fase 1.2.2 → ✅ Concluída
-Fase 1.2.3 → ✅ Concluída
-Fase 1.2.4 → ✅ Concluída
-Fase 1.2.5 → ▶ Próxima
+Fase 0 → ✅
+Fase 1.0 → ✅
+Fase 1.1 → ✅
+Fase 1.2.1 → ✅
+Fase 1.2.2 → ✅
+Fase 1.2.3 → ✅
+Fase 1.2.4 → ✅
+Fase 1.2.5 → ✅
+Fase 1.2.6 → ▶ Próxima
 ```
 
-## 15. Estado atual oficial
+## 12. Progresso geral
 
-> O projeto possui uma fundação CSS organizada, Layout Base estruturado com Grid e Flexbox e uma Sidebar funcional, semântica e validada, incluindo ícones, estado ativo, hover e foco visível.
+**20%**
 
-> A próxima etapa será a construção da Navbar, incluindo seu relacionamento dimensional e visual com a Sidebar e a área principal.
+Percentual estimado sobre o escopo completo planejado. Será reavaliado ao final de cada etapa concluída.

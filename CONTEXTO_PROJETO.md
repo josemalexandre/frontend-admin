@@ -1,5 +1,3 @@
-# CONTEXTO_PROJETO.md
-
 # Template Flask — Contexto do Projeto
 
 ## 1. Identificação e objetivo
@@ -15,6 +13,7 @@ Sistemas-alvo incluem LicenSys, Sistema Financeiro, Sistema Pericial, Controle P
 ## 2. Estratégia de implementação
 
 ### Primeira implementação
+
 - HTML5
 - CSS3
 - JavaScript ES2023+
@@ -24,7 +23,9 @@ Sistemas-alvo incluem LicenSys, Sistema Financeiro, Sistema Pericial, Controle P
 - bibliotecas independentes, como Bootstrap Icons, podem ser utilizadas
 
 ### Segunda implementação
+
 Após a versão em código puro, o mesmo projeto será reconstruído com Bootstrap 5.3+ para comparar:
+
 - abstrações;
 - componentes;
 - convenções;
@@ -34,6 +35,7 @@ Após a versão em código puro, o mesmo projeto será reconstruído com Bootstr
 ## 3. Escopo
 
 O template deverá contemplar, entre outros:
+
 - Layout Base;
 - Sidebar;
 - Navbar;
@@ -70,6 +72,7 @@ O template deverá contemplar, entre outros:
 ## 4. Metodologia
 
 Cada etapa seguirá, quando aplicável:
+
 1. Objetivo
 2. Conceitos
 3. Análise Visual
@@ -95,6 +98,7 @@ body
 ## 5. Conexão com Flask
 
 O projeto deve manter desde o início uma visão de futura integração com:
+
 - Jinja2;
 - templates;
 - static;
@@ -109,7 +113,7 @@ O projeto deve manter desde o início uma visão de futura integração com:
 
 A integração será implementada somente quando fizer sentido para a etapa.
 
-## 6. Estrutura
+## 6. Estrutura arquitetural atual
 
 ```text
 .
@@ -125,7 +129,8 @@ A integração será implementada somente quando fizer sentido para a etapa.
 │   │   │   ├── typography.css
 │   │   │   └── variables.css
 │   │   ├── components
-│   │   │   └── sidebar.css
+│   │   │   ├── sidebar.css
+│   │   │   └── navbar.css
 │   │   ├── layout
 │   │   │   └── app.css
 │   │   └── pages
@@ -135,6 +140,10 @@ A integração será implementada somente quando fizer sentido para a etapa.
 │   └── js
 └── pages
 ```
+
+Esta estrutura representa a organização física/arquitetural atual do projeto.
+
+Alterações nessa estrutura devem ser tratadas como alterações arquiteturais e consolidadas neste documento.
 
 ## 7. Arquitetura CSS
 
@@ -175,6 +184,10 @@ sidebar__section-title
 sidebar__link
 sidebar__footer
 sidebar__link--active
+
+navbar
+navbar__title
+navbar__actions
 ```
 
 ## 9. Grid e Flexbox
@@ -204,6 +217,16 @@ Flexbox é usado para distribuição/alinhamento em uma dimensão:
 → display: flex
 → align-items: center
 → gap: var(--space-3)
+
+.navbar
+→ display: flex
+→ align-items: center
+
+.navbar__actions
+→ display: flex
+→ align-items: center
+→ gap: var(--space-4)
+→ margin-left: auto
 ```
 
 Não utilizar Grid/Flexbox quando o fluxo normal do HTML já resolver o problema.
@@ -211,6 +234,7 @@ Não utilizar Grid/Flexbox quando o fluxo normal do HTML já resolver o problema
 ## 10. Design System
 
 Identidade:
+
 - moderna;
 - limpa;
 - profissional;
@@ -309,9 +333,8 @@ active
 disabled
 ```
 
-A Sidebar já utiliza estados explícitos.
-
 Princípios:
+
 - HTML semântico;
 - links para navegação;
 - foco visual preservado;
@@ -366,16 +389,20 @@ Links atualmente em `href="#"` são placeholders e futuramente poderão utilizar
 
 ```text
 CONTEXTO_PROJETO.md
-→ arquitetura, princípios, metodologia e regras permanentes
+→ planta baixa: arquitetura, princípios, metodologia e regras permanentes
 
 ESTADO_ATUAL.md
-→ situação concreta, arquivos, componentes, pendências e próxima etapa
+→ fotografia atual: situação concreta, arquivos, componentes, pendências e próxima etapa
 
 FRONTEND_ROADMAP.md
-→ evolução, aprendizagem, roadmap e histórico relevante
+→ cronograma: evolução, etapas, status e próximos marcos
 ```
 
-Os documentos não devem duplicar detalhadamente suas responsabilidades.
+O `CONTEXTO_PROJETO.md` só deve ser alterado quando houver mudança estrutural, arquitetural, metodológica ou de regra permanente.
+
+O `ESTADO_ATUAL.md` deve acompanhar a situação concreta do projeto.
+
+O `FRONTEND_ROADMAP.md` deve registrar o planejamento e o progresso sem reproduzir o conteúdo detalhado dos outros documentos.
 
 ## 17. Princípio geral
 
