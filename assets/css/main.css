@@ -4,3 +4,5 @@
 @import "./layout/app.css";
 @import "./components/sidebar.css";
 @import "./components/navbar.css";
+@import "./components/breadcrumb.css";
+@import "./components/page-header.css";

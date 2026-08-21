@@ -48,15 +48,6 @@ Fase 9 → Bootstrap
 
 **Status:** ✅ Concluída
 
-Principais entregas:
-
-- identidade visual;
-- paleta;
-- tipografia;
-- biblioteca de ícones;
-- diretrizes de responsividade;
-- definição do estilo visual.
-
 ## 5. Fase 1 — Fundação
 
 **Status:** 🟡 Em andamento
@@ -65,18 +56,9 @@ Principais entregas:
 
 **Status:** ✅ Concluída
 
-Entrega:
-
-- estrutura inicial do projeto;
-- organização de `assets`;
-- `index.html`;
-- `main.css`.
-
 ### 1.1 — Design System Base
 
 **Status:** ✅ Concluída
-
-Etapas:
 
 ```text
 1.1.1 → Variáveis CSS       ✅
@@ -91,47 +73,73 @@ Etapas:
 **Status:** 🟡 Em andamento
 
 ```text
-1.2.1 → Estrutura Visual do Layout Base       ✅
-1.2.2 → Dimensões e Superfícies               ✅
-1.2.3 → Sidebar: Estrutura e Navegação        ✅
-1.2.4 → Sidebar: Ícones e Estados             ✅
+1.2.1 → Estrutura Visual do Layout Base        ✅
+1.2.2 → Dimensões e Superfícies                ✅
+1.2.3 → Sidebar: Estrutura e Navegação         ✅
+1.2.4 → Sidebar: Ícones e Estados              ✅
 1.2.5 → Navbar: Estrutura e Layout             ✅
-1.2.6 → Consolidação da Área Principal         ▶ Próxima
+1.2.6 → Consolidação da Área Principal         ✅
+1.2.7 → Estrutura de Conteúdo da Página        ✅
+1.2.8 → Próxima etapa                           ▶
 ```
 
-## 6. Próxima etapa
+## 6. Fase 1.2.7 — Estrutura de Conteúdo da Página
 
-### Fase 1.2.6 — Consolidação da Área Principal
+**Status:** ✅ Concluída
+
+Marco concluído:
+
+```text
+main
+↓
+Breadcrumb
+↓
+Page Header
+↓
+Page Content
+```
+
+A etapa consolidou a estrutura semântica e a separação de responsabilidades entre:
+
+```text
+Breadcrumb
+→ localização do usuário
+
+Page Header
+→ identificação da página e futuras ações
+
+Page Content
+→ conteúdo específico da página
+```
+
+Também foram consolidados os componentes:
+
+```text
+breadcrumb.css
+page-header.css
+```
+
+O `page-content` permaneceu sem CSS próprio por não possuir ainda uma necessidade visual específica.
+
+## 7. Próxima etapa oficial
+
+### Fase 1.2.8
 
 **Status:** ▶ Próxima
 
 **Objetivo:**
 
-Preparar a área principal para receber o conteúdo das futuras telas administrativas.
+Continuar a consolidação do Layout Base antes de iniciar a construção dos componentes de conteúdo do Dashboard.
 
-**Próximo marco:**
+A etapa deverá ser definida e detalhada antes da implementação, seguindo a metodologia do projeto.
 
-```text
-main
-↓
-estrutura de conteúdo
-↓
-hierarquia de página
-↓
-Breadcrumb
-↓
-Dashboard
-```
-
-## 7. Fases futuras
+## 8. Fases futuras
 
 ### Fase 2 — Layout
 
-- Sidebar consolidada;
-- Navbar consolidada;
-- área principal;
-- Breadcrumb;
-- responsividade estrutural.
+- consolidação estrutural;
+- responsividade;
+- ajustes gerais de layout.
 
 ### Fase 3 — Dashboard
 
@@ -190,7 +198,7 @@ Dashboard
 - análise das abstrações;
 - CSS próprio x Bootstrap.
 
-## 8. Histórico resumido
+## 9. Histórico resumido
 
 ```text
 Fase 0
@@ -216,12 +224,20 @@ Fase 1.2.4
 
 Fase 1.2.5
 → Navbar estruturada e alinhada à Sidebar
+
+Fase 1.2.6
+→ área principal consolidada
+
+Fase 1.2.7
+→ Breadcrumb, Page Header e Page Content estruturados
 ```
 
-## 9. Progresso geral
+## 10. Progresso geral
 
-**20%**
+**22%**
 
 Estimativa sobre o escopo completo do projeto.
 
-O percentual será reavaliado ao final de cada etapa e não representa simplesmente a proporção de etapas concluídas.
+O percentual considera o peso relativo da fundação já consolidada e o volume ainda restante de Dashboard, formulários, CRUD, componentes, telas, preparação para Flask e reconstrução com Bootstrap.
+
+O percentual não representa simplesmente a proporção de etapas concluídas.

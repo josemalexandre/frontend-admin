@@ -130,7 +130,9 @@ A integração será implementada somente quando fizer sentido para a etapa.
 │   │   │   └── variables.css
 │   │   ├── components
 │   │   │   ├── sidebar.css
-│   │   │   └── navbar.css
+│   │   │   ├── navbar.css
+│   │   │   ├── breadcrumb.css
+│   │   │   └── page-header.css
 │   │   ├── layout
 │   │   │   └── app.css
 │   │   └── pages
@@ -141,9 +143,7 @@ A integração será implementada somente quando fizer sentido para a etapa.
 └── pages
 ```
 
-Esta estrutura representa a organização física/arquitetural atual do projeto.
-
-Alterações nessa estrutura devem ser tratadas como alterações arquiteturais e consolidadas neste documento.
+A estrutura representa a organização física e arquitetural atual. Novos componentes ou mudanças de camadas devem ser tratados como alterações estruturais.
 
 ## 7. Arquitetura CSS
 
@@ -163,6 +163,26 @@ main.css
 - `pages`: regras específicas de páginas.
 - `main.css`: ponto de entrada e importação.
 
+`main.css` mantém a ordem geral do mais fundamental para o mais específico:
+
+```text
+reset.css
+↓
+variables.css
+↓
+typography.css
+↓
+layout/app.css
+↓
+components/sidebar.css
+↓
+components/navbar.css
+↓
+components/breadcrumb.css
+↓
+components/page-header.css
+```
+
 ## 8. BEM
 
 Uso pragmático:
@@ -173,7 +193,7 @@ Block__element
 Block--modifier
 ```
 
-Exemplos:
+Componentes consolidados:
 
 ```text
 sidebar
@@ -188,7 +208,18 @@ sidebar__link--active
 navbar
 navbar__title
 navbar__actions
+
+breadcrumb
+
+page-header
+page-header__info
+page-header__title
+page-header__actions
+
+page-content
 ```
+
+BEM é utilizado como convenção de nomenclatura, sem aplicação rígida quando isso adicionar complexidade desnecessária.
 
 ## 9. Grid e Flexbox
 
@@ -201,7 +232,7 @@ Grid é usado para estruturas bidimensionais, especialmente o layout principal:
 → min-height: 100vh
 ```
 
-Flexbox é usado para distribuição/alinhamento em uma dimensão:
+Flexbox é usado para distribuição e alinhamento em uma dimensão:
 
 ```text
 .app__content
@@ -222,11 +253,15 @@ Flexbox é usado para distribuição/alinhamento em uma dimensão:
 → display: flex
 → align-items: center
 
-.navbar__actions
+.breadcrumb
 → display: flex
 → align-items: center
-→ gap: var(--space-4)
-→ margin-left: auto
+→ gap: var(--space-2)
+
+.page-header
+→ display: flex
+→ align-items: center
+→ justify-content: space-between
 ```
 
 Não utilizar Grid/Flexbox quando o fluxo normal do HTML já resolver o problema.
@@ -244,18 +279,18 @@ Identidade:
 
 ### Cores
 
-```css
---color-primary: #2563EB;
---color-primary-hover: #1D4ED8;
---color-success: #16A34A;
---color-warning: #F59E0B;
---color-error: #DC2626;
---color-background: #F8FAFC;
---color-surface: #FFFFFF;
---color-border: #E5E7EB;
---color-text-primary: #111827;
---color-text-secondary: #6B7280;
---color-white: #FFFFFF;
+```text
+--color-primary: #2563EB
+--color-primary-hover: #1D4ED8
+--color-success: #16A34A
+--color-warning: #F59E0B
+--color-error: #DC2626
+--color-background: #F8FAFC
+--color-surface: #FFFFFF
+--color-border: #E5E7EB
+--color-text-primary: #111827
+--color-text-secondary: #6B7280
+--color-white: #FFFFFF
 ```
 
 ### Espaçamento
@@ -340,7 +375,9 @@ Princípios:
 - foco visual preservado;
 - navegação por teclado;
 - ícones decorativos sem informação redundante;
-- estados não dependentes exclusivamente de cor.
+- estados não dependentes exclusivamente de cor;
+- Breadcrumb utiliza `nav` com `aria-label`;
+- página atual do Breadcrumb utiliza `aria-current="page"`.
 
 ## 13. Responsividade
 
