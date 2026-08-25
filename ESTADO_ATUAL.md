@@ -1,4 +1,4 @@
-# Template Flask — Estado Atual
+# Template Flask — ESTADO ATUAL
 
 ## 1. Estado Geral
 
@@ -14,17 +14,21 @@
 
 **JavaScript:** ainda não utilizado.
 
+---
+
 ## 2. Fase Atual
 
-**Fase 1 — Fundação**
+**Fase 1 — Fundação:** concluída.
 
-**Subfase:** Fase 1.2 — Primeiro HTML e Layout Base
-
-**Última etapa concluída:** Fase 1.2.7 — Estrutura de Conteúdo da Página
+**Última etapa concluída:** Fase 1.2 — Primeiro HTML e Layout Base.
 
 **Status:** concluída, revisada e validada.
 
-**Próxima etapa:** Fase 1.2.8 — próxima etapa oficial do roadmap.
+**Próxima fase:** Fase 2 — Layout.
+
+A Fase 1.2 foi encerrada porque o Layout Base atingiu o nível necessário para receber os componentes reais do template. Não serão criadas novas microetapas estruturais apenas para manter a numeração.
+
+---
 
 ## 3. Estrutura Atual
 
@@ -56,7 +60,24 @@
 └── pages
 ```
 
+---
+
 ## 4. Layout e Estrutura da Página
+
+```text
+.app
+├── aside.sidebar
+└── .app__content
+    ├── header.navbar
+    └── main
+        └── .page-container
+            ├── nav.breadcrumb
+            ├── header.page-header
+            │   ├── .page-header__info
+            │   │   └── .page-header__title
+            │   └── .page-header__actions
+            └── section.page-content
+```
 
 ### `.app`
 
@@ -78,29 +99,28 @@ min-width: 0
 
 ```text
 flex: 1
+min-width: 0
 background: var(--color-background)
 padding: var(--space-6)
 ```
 
-Responsabilidade: receber a estrutura e o conteúdo específico das páginas administrativas.
-
-### Estrutura atual do `main`
+### `.page-container`
 
 ```text
-main
-├── nav.breadcrumb
-├── header.page-header
-│   ├── .page-header__info
-│   │   └── .page-header__title
-│   └── .page-header__actions
-└── section.page-content
+width: 100%
+max-width: 1200px
+margin-inline: auto
 ```
+
+Responsabilidade: limitar e centralizar o conteúdo interno do `main`.
+
+---
 
 ## 5. Componentes Consolidados
 
 ### Sidebar
 
-Status: implementada, revisada e validada.
+Status: **implementada, revisada e validada**.
 
 Inclui:
 
@@ -113,7 +133,7 @@ Inclui:
 
 ### Navbar
 
-Status: implementada, revisada e validada.
+Status: **implementada, revisada e validada**.
 
 Estrutura:
 
@@ -121,24 +141,18 @@ Estrutura:
 .navbar
 ├── .navbar__title
 └── .navbar__actions
-    └── span
 ```
 
-A Navbar possui altura de `4rem`, alinhada dimensionalmente com `sidebar__brand`.
+Altura consolidada: `4rem`.
 
 ### Breadcrumb
 
-**Arquivo:** `assets/css/components/breadcrumb.css`
+Status: **implementado, revisado e validado**.
 
-Status: implementado, revisado e validado.
-
-Estrutura:
+Arquivo:
 
 ```text
-.breadcrumb
-├── <a>
-├── <span aria-hidden="true">
-└── <span aria-current="page">
+assets/css/components/breadcrumb.css
 ```
 
 Especificação:
@@ -150,35 +164,17 @@ Especificação:
 → gap: var(--space-2)
 → font-size: 0.875rem
 → line-height: 1.5
-
-.breadcrumb a
-→ color: var(--color-text-secondary)
-→ text-decoration: none
-
-.breadcrumb a:hover
-→ color: var(--color-primary)
-→ text-decoration: underline
-
-.breadcrumb span
-→ color: var(--color-text-secondary)
-
-.breadcrumb span[aria-current="page"]
-→ color: var(--color-text-primary)
+→ margin-bottom: var(--space-3)
 ```
 
 ### Page Header
 
-**Arquivo:** `assets/css/components/page-header.css`
+Status: **implementado, revisado e validado**.
 
-Status: implementado, revisado e validado.
-
-Estrutura:
+Arquivo:
 
 ```text
-.page-header
-├── .page-header__info
-│   └── .page-header__title
-└── .page-header__actions
+assets/css/components/page-header.css
 ```
 
 Especificação:
@@ -199,23 +195,25 @@ Especificação:
 → color: var(--color-text-primary)
 ```
 
-`page-header__info` e `page-header__actions` ainda não possuem regras próprias adicionais porque não existe necessidade visual concreta para elas.
+`page-header__info` e `page-header__actions` não possuem regras próprias adicionais porque não existe necessidade visual concreta.
 
 ### Page Content
 
-Status: estruturado semanticamente e validado.
+Status: **estruturado semanticamente e validado**.
 
 ```text
 .page-content
 → container lógico do conteúdo específico da página
-→ sem CSS próprio neste momento
+→ sem CSS próprio
 ```
 
-Não foi criado `page-content.css`, pois ainda não existe uma responsabilidade visual específica que justifique um arquivo próprio.
+Não foi criado `page-content.css`, pois não existe responsabilidade visual que justifique um arquivo próprio.
+
+---
 
 ## 6. `index.html`
 
-A estrutura atual da página foi validada:
+Estrutura validada:
 
 ```text
 .app
@@ -223,12 +221,15 @@ A estrutura atual da página foi validada:
 └── .app__content
     ├── header.navbar
     └── main
-        ├── nav.breadcrumb
-        ├── header.page-header
-        └── section.page-content
+        └── .page-container
+            ├── nav.breadcrumb
+            ├── header.page-header
+            └── section.page-content
 ```
 
 A estrutura utiliza HTML semântico e está preparada para futura integração com Jinja2.
+
+---
 
 ## 7. `main.css`
 
@@ -254,41 +255,70 @@ breadcrumb.css
 page-header.css
 ```
 
-## 8. Pendências
+---
+
+## 8. Fase 1.2 — Resultado Final
+
+A Fase 1.2 foi concluída com:
+
+```text
+1.2.1 → Estrutura Visual do Layout Base        ✅
+1.2.2 → Dimensões e Superfícies                ✅
+1.2.3 → Sidebar: Estrutura e Navegação         ✅
+1.2.4 → Sidebar: Ícones e Estados              ✅
+1.2.5 → Navbar: Estrutura e Layout             ✅
+1.2.6 → Consolidação da Área Principal         ✅
+1.2.7 → Estrutura de Conteúdo da Página        ✅
+1.2.8 → Espaçamento e Ritmo Vertical            ✅
+1.2.9 → Container de Conteúdo                  ✅
+```
+
+### Critério de encerramento
+
+A fase foi considerada concluída porque:
+
+- o Application Shell está estruturado;
+- Sidebar e Navbar estão consolidadas;
+- a área principal está definida;
+- Breadcrumb, Page Header e Page Content estão estruturados;
+- o conteúdo possui container com largura máxima;
+- o espaçamento utiliza Design Tokens;
+- não existem pendências estruturais relevantes para iniciar os componentes reais.
+
+---
+
+## 9. Pendências
 
 - responsividade completa;
 - JavaScript;
 - integração com Flask/Jinja2;
 - conteúdo real do Dashboard;
-- componentes e telas das fases posteriores.
+- componentes das fases posteriores.
 
-Não há pendência relevante para o encerramento da Fase 1.2.7.
+---
 
-## 9. Próxima etapa
+## 10. Próxima Fase
 
-### Fase 1.2.8
+### Fase 2 — Layout
 
-Será definida pelo `FRONTEND_ROADMAP.md`.
+Objetivo:
 
-Objetivo: continuar a construção da fundação visual e estrutural antes da implementação das telas e componentes de maior complexidade.
+- consolidar comportamento responsivo;
+- tratar diferentes larguras de viewport;
+- definir comportamento da Sidebar e da área principal;
+- trabalhar breakpoints;
+- adaptar o Layout Base para desktop, tablet e smartphone.
 
-## 10. Status
+A Fase 2 deve evoluir o Layout Base já consolidado, sem recriá-lo.
 
-```text
-Fase 0 → ✅
-Fase 1.0 → ✅
-Fase 1.1 → ✅
-Fase 1.2.1 → ✅
-Fase 1.2.2 → ✅
-Fase 1.2.3 → ✅
-Fase 1.2.4 → ✅
-Fase 1.2.5 → ✅
-Fase 1.2.6 → ✅
-Fase 1.2.7 → ✅
-```
+---
 
-## 11. Progresso geral
+## 11. Progresso Geral
 
-**22%**
+**25%**
 
-Percentual estimado sobre o escopo completo planejado, considerando a relevância da fundação já consolidada e o volume ainda restante de Dashboard, formulários, CRUD, componentes, telas, preparação para Flask e reconstrução com Bootstrap.
+Para o indicador principal do desenvolvimento, o cálculo considera as Fases 0 a 7.
+
+As Fases 8 e 9 continuam fazendo parte do projeto, mas ficam fora do denominador do progresso principal, pois representam respectivamente a preparação/integração com Flask e a reconstrução comparativa com Bootstrap.
+
+O percentual não representa simplesmente a quantidade de arquivos ou microtarefas concluídas.

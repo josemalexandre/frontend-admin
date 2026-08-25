@@ -6,9 +6,13 @@
 
 Construção de um template administrativo/financeiro reutilizável para futuros sistemas desenvolvidos com Flask.
 
-O objetivo é desenvolver competência prática para criar interfaces administrativas modernas, profissionais, organizadas e responsivas. O projeto não pretende formar um desenvolvedor Front-end generalista.
+O objetivo é criar uma base profissional, moderna, responsiva, acessível e reutilizável, que possa ser adaptada ao LicenSys e a outros sistemas Flask.
+
+O projeto também funciona como ambiente prático de aprendizado de HTML, CSS e posteriormente JavaScript, sempre com foco em aplicação real.
 
 Sistemas-alvo incluem LicenSys, Sistema Financeiro, Sistema Pericial, Controle Patrimonial, Controle de Processos e outros sistemas Flask.
+
+---
 
 ## 2. Estratégia de implementação
 
@@ -31,6 +35,8 @@ Após a versão em código puro, o mesmo projeto será reconstruído com Bootstr
 - convenções;
 - CSS próprio x Bootstrap;
 - quando utilizar componentes próprios.
+
+---
 
 ## 3. Escopo
 
@@ -69,6 +75,8 @@ O template deverá contemplar, entre outros:
 - integração visual de gráficos;
 - componentes reutilizáveis.
 
+---
+
 ## 4. Metodologia
 
 Cada etapa seguirá, quando aplicável:
@@ -76,14 +84,13 @@ Cada etapa seguirá, quando aplicável:
 1. Objetivo
 2. Conceitos
 3. Análise Visual
-4. Implementação
-5. Explicação
-6. Alternativas
-7. Conexão com Flask
-8. Fixação
-9. Resumo
+4. Especificação
+5. Implementação
+6. Validação
+7. Revisão
+8. Resumo
 
-Uma etapa só é encerrada após implementação, validação visual, revisão técnica/arquitetural e documentação.
+Uma etapa só é encerrada após implementação, validação visual, revisão técnica/arquitetural e documentação correspondente.
 
 As especificações devem ser objetivas, por exemplo:
 
@@ -94,6 +101,29 @@ body
 → weight 400
 → line-height 1.5
 ```
+
+### Metodologia de aprendizagem
+
+As quatro perguntas obrigatórias de consolidação foram **suprimidas**.
+
+Elas poderão ser utilizadas quando houver dúvida conceitual relevante, mas não constituem requisito de todas as etapas.
+
+O aprendizado será aprofundado quando:
+
+- surgir conceito novo relevante;
+- houver dúvida do usuário;
+- uma decisão arquitetural exigir compreensão;
+- a implementação apresentar comportamento inesperado.
+
+O objetivo é preservar o aprendizado sem transformar o desenvolvimento em uma sequência excessiva de microtarefas.
+
+### Princípio de produtividade
+
+Uma nova etapa somente deve ser criada quando houver uma necessidade real de desenvolvimento.
+
+Não criar microetapas artificiais apenas para manter a numeração.
+
+---
 
 ## 5. Conexão com Flask
 
@@ -112,6 +142,8 @@ O projeto deve manter desde o início uma visão de futura integração com:
 - `url_for()`.
 
 A integração será implementada somente quando fizer sentido para a etapa.
+
+---
 
 ## 6. Estrutura arquitetural atual
 
@@ -144,6 +176,8 @@ A integração será implementada somente quando fizer sentido para a etapa.
 ```
 
 A estrutura representa a organização física e arquitetural atual. Novos componentes ou mudanças de camadas devem ser tratados como alterações estruturais.
+
+---
 
 ## 7. Arquitetura CSS
 
@@ -183,6 +217,8 @@ components/breadcrumb.css
 components/page-header.css
 ```
 
+---
+
 ## 8. BEM
 
 Uso pragmático:
@@ -193,7 +229,7 @@ Block__element
 Block--modifier
 ```
 
-Componentes consolidados:
+Componentes e estruturas consolidados:
 
 ```text
 sidebar
@@ -217,9 +253,12 @@ page-header__title
 page-header__actions
 
 page-content
+page-container
 ```
 
 BEM é utilizado como convenção de nomenclatura, sem aplicação rígida quando isso adicionar complexidade desnecessária.
+
+---
 
 ## 9. Grid e Flexbox
 
@@ -265,6 +304,8 @@ Flexbox é usado para distribuição e alinhamento em uma dimensão:
 ```
 
 Não utilizar Grid/Flexbox quando o fluxo normal do HTML já resolver o problema.
+
+---
 
 ## 10. Design System
 
@@ -348,6 +389,8 @@ h4
 
 Pesos: 400 Regular, 500 Medium, 600 Semibold, 700 Bold.
 
+---
+
 ## 11. Ícones
 
 Biblioteca: **Bootstrap Icons**.
@@ -355,6 +398,8 @@ Biblioteca: **Bootstrap Icons**.
 Seu uso não significa adoção do Bootstrap CSS.
 
 Ícones decorativos utilizam `aria-hidden="true"`.
+
+---
 
 ## 12. Estados e acessibilidade
 
@@ -379,11 +424,17 @@ Princípios:
 - Breadcrumb utiliza `nav` com `aria-label`;
 - página atual do Breadcrumb utiliza `aria-current="page"`.
 
+---
+
 ## 13. Responsividade
 
 A interface será responsiva para Desktop, Notebook, Tablet e Smartphone.
 
 Estratégia inicial: Desktop First, evoluindo progressivamente.
+
+A responsividade completa será tratada na Fase 2 — Layout.
+
+---
 
 ## 14. Integração futura
 
@@ -404,6 +455,8 @@ static/
 
 Links atualmente em `href="#"` são placeholders e futuramente poderão utilizar `{{ url_for(...) }}`.
 
+---
+
 ## 15. Regras
 
 1. Não adicionar complexidade sem necessidade.
@@ -421,6 +474,9 @@ Links atualmente em `href="#"` são placeholders e futuramente poderão utilizar
 13. Considerar acessibilidade desde a construção.
 14. Não confundir bibliotecas independentes com frameworks de UI.
 15. Manter CSS puro compreensível para posterior comparação com Bootstrap.
+16. Não criar microetapas sem necessidade real.
+
+---
 
 ## 16. Governança documental
 
@@ -440,6 +496,8 @@ O `CONTEXTO_PROJETO.md` só deve ser alterado quando houver mudança estrutural,
 O `ESTADO_ATUAL.md` deve acompanhar a situação concreta do projeto.
 
 O `FRONTEND_ROADMAP.md` deve registrar o planejamento e o progresso sem reproduzir o conteúdo detalhado dos outros documentos.
+
+---
 
 ## 17. Princípio geral
 
