@@ -12,6 +12,9 @@
 <body>
     <div class="app">
         <aside class="sidebar">
+            <button class="sidebar__close" type="button" aria-label="Fechar menu">
+                 <i class="bi bi-x-lg" aria-hidden="true"></i>
+            </button>
             <div class="sidebar__brand">Template Flask</div>
             <nav class="sidebar__nav">
                 <div class="sidebar__section">
@@ -41,8 +44,12 @@
                 </a>
             </div>
         </aside>
+        <div class="sidebar-overlay"></div>
         <div class="app__content">
             <header class="navbar">
+                <button class="navbar__menu" type="button" aria-label="Abrir menu">
+                    <i class="bi bi-list" aria-hidden="true"></i>
+                </button>
                 <div class="navbar__title">
                     Dashboard
                 </div>
