@@ -24,3 +24,30 @@
     font-size: 0.875rem;
     color: var(--color-text-secondary);
 }
+
+.navbar__menu {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.navbar__menu:hover {
+    color: var(--color-text-primary);
+}
+
+.navbar__menu:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+    .navbar__menu {
+        display: flex;
+    }
+}

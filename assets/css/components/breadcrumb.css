@@ -12,7 +12,7 @@
     text-decoration: none;
 }
 
-.breadcrumb a:hover{
+.breadcrumb a:hover {
     color: var(--color-primary);
     text-decoration: underline;
 }
@@ -21,6 +21,6 @@
     color: var(--color-text-secondary);
 }
 
-.breadcrumb span[aria-current="page"]{
+.breadcrumb span[aria-current="page"] {
     color: var(--color-text-primary);
 }

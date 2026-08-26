@@ -177,6 +177,8 @@ A integração será implementada somente quando fizer sentido para a etapa.
 
 A estrutura representa a organização física e arquitetural atual. Novos componentes ou mudanças de camadas devem ser tratados como alterações estruturais.
 
+No Layout Base responsivo, o `.sidebar-overlay` permanece dentro de `.app__content`, para não participar do Grid estrutural da aplicação.
+
 ---
 
 ## 7. Arquitetura CSS
@@ -401,6 +403,30 @@ Seu uso não significa adoção do Bootstrap CSS.
 
 ---
 
+## 11.1. JavaScript
+
+JavaScript ES2023+ puro é utilizado quando existe necessidade real de comportamento interativo.
+
+No estado atual, o `main.js` controla o comportamento responsivo da Sidebar:
+
+```text
+menuButton
+→ abre Sidebar e ativa overlay
+
+closeButton
+→ fecha Sidebar e desativa overlay
+
+sidebarOverlay
+→ fecha Sidebar e desativa overlay
+
+closeSidebar()
+→ concentra a lógica reutilizável de fechamento
+```
+
+O JavaScript não deve assumir responsabilidades de apresentação que pertencem ao CSS.
+
+---
+
 ## 12. Estados e acessibilidade
 
 Quando aplicável:
@@ -428,11 +454,13 @@ Princípios:
 
 ## 13. Responsividade
 
-A interface será responsiva para Desktop, Notebook, Tablet e Smartphone.
+A interface é responsiva para Desktop, Notebook, Tablet e Smartphone.
 
-Estratégia inicial: Desktop First, evoluindo progressivamente.
+Estratégia: Desktop First, evoluindo progressivamente.
 
-A responsividade completa será tratada na Fase 2 — Layout.
+A Fase 2 consolidou o comportamento responsivo do Layout Base, com breakpoint principal em `640px`, Sidebar móvel, overlay e controles de abertura/fechamento.
+
+Não devem ser criados novos breakpoints sem necessidade técnica concreta.
 
 ---
 

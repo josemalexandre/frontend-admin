@@ -112,7 +112,7 @@ Não serão criadas novas microetapas estruturais antes da evolução para a Fas
 
 # 6. Fase 2 — Layout
 
-**Status:** ▶ Próxima
+**Status:** ✅ Concluída
 
 ## Objetivo
 
@@ -263,23 +263,26 @@ Fase 1.1
 
 Fase 1.2
 → Layout Base completo e validado                    ✅
+
+Fase 2
+→ Layout responsivo e interativo validado            ✅
 ```
 
 ---
 
 # 15. Próximo marco
 
-**Fase 2 — Layout**
+**Fase 3 — Dashboard**
 
 Objetivo imediato:
 
-> tornar o Layout Base já consolidado adaptável a diferentes tamanhos de tela, sem recriar sua estrutura.
+> construir a primeira tela funcional do template utilizando o Layout Base e os componentes já consolidados.
 
 ---
 
 # 16. Progresso geral
 
-**25%**
+**40%**
 
 O indicador considera as Fases 0 a 7.
 
