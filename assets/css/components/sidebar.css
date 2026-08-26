@@ -5,6 +5,15 @@
     transition: transform 0.3s ease;
 }
 
+.sidebar.is-open {
+    transform: translateX(0);
+}
+
+.sidebar-overlay.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 .sidebar__brand {
     display: flex;
     align-items: center;
