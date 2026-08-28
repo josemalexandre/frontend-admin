@@ -93,11 +93,40 @@
                                 <span class="kpi__description">Itens que requerem atenção</span>
                             </article>
                         </div>
+                        <div class="dashboard-cards">
+                            <div class="card">
+                                <div class="card__header">
+                                    <h2>Atividades recentes</h2>
+                                </div>
+                                <div class="card__body">
+                                    <ul>
+                                        <li>Registro atualizado</li>
+                                        <li>Novo item cadastrado</li>
+                                        <li>Processo concluído</li>
+                                    </ul>
+                                </div>
+                                <div class="card__footer">
+                                    <a href="#">Ver todas</a>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card__header">
+                                    <h2>Evolução</h2>
+                                </div>
+                                <div class="card__body">
+                                    <canvas id="evolutionChart"></canvas>
+                                </div>
+                                <div class="card__footer">
+                                    <a href="#">Ver relatório</a>
+                                </div>
+                            </div>
+                        </div>
                     </section>
                 </div>
             </main>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../assets/js/main.js"></script>
 </body>
 

@@ -6,4 +6,5 @@
 @import "./components/navbar.css";
 @import "./components/breadcrumb.css";
 @import "./components/page-header.css";
-@import "./components/kpis.css"
+@import "./components/kpis.css";
+@import "./components/card.css"

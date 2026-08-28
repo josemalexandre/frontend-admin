@@ -1,0 +1,33 @@
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+}
+
+.card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: var(--space-4);
+    min-width: 0;
+}
+
+.card__header h2 {
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-4);
+}
+
+.card__body{
+    height: 250px;
+    min-width: 0;
+}
+
+.card__footer{
+    margin-top: var(--space-4);
+}
+
+@media (max-width: 640px) {
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+}

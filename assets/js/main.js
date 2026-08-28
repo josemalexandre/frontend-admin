@@ -25,3 +25,44 @@ sidebarOverlay.addEventListener('click', () => {
 });
 
 
+const evolutionChart = document.getElementById("evolutionChart");
+
+if (evolutionChart) {
+    new Chart(evolutionChart, {
+        type: "line",
+        data: {
+            labels: [
+                "Janeiro",
+                "Fevereiro",
+                "Março",
+                "Abril",
+                "Maio",
+                "Junho"
+            ],
+            datasets: [
+                {
+                    label: "Registros",
+                    data: [180, 240, 210, 320, 290, 380],
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
