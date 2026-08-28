@@ -106,7 +106,7 @@ Fase 9 → Bootstrap
 
 O Layout Base atingiu o nível necessário para receber os componentes reais do template.
 
-Não serão criadas novas microetapas estruturais antes da evolução para a Fase 2.
+Não serão criadas novas microetapas estruturais antes da evolução para as fases de conteúdo.
 
 ---
 
@@ -128,13 +128,17 @@ Evoluir o Layout Base já consolidado para comportamento real em diferentes tama
 - adaptação para smartphone;
 - preservação da usabilidade.
 
-A Fase 2 deverá trabalhar sobre a estrutura existente, sem recriar o Layout Base.
+A Fase 2 trabalhou sobre a estrutura existente, sem recriar o Layout Base.
 
 ---
 
 # 7. Fase 3 — Dashboard
 
-**Status:** ⏳ Planejada
+**Status:** ✅ Concluída
+
+## Objetivo
+
+Construir a primeira tela de conteúdo do Template utilizando o Layout Base e os componentes já consolidados.
 
 ### Escopo
 
@@ -144,11 +148,49 @@ A Fase 2 deverá trabalhar sobre a estrutura existente, sem recriar o Layout Bas
 - alertas;
 - organização do conteúdo do Dashboard.
 
+### Resultado
+
+```text
+Dashboard
+├── KPIs
+│   └── 4 indicadores demonstrativos
+│
+├── Cards
+│   ├── Atividades recentes
+│   └── Evolução
+│
+├── Gráfico
+│   └── evolução mensal demonstrativa
+│
+└── Alert
+    └── alerta de atenção
+```
+
+### Validações
+
+- desktop;
+- smartphone;
+- organização responsiva;
+- ausência de overflow horizontal relevante;
+- utilização dos Design Tokens;
+- componentes estruturados com BEM;
+- preservação de `.page-content` sem CSS próprio.
+
+O gráfico utilizado na fase possui finalidade demonstrativa. A biblioteca empregada não constitui decisão tecnológica permanente para os futuros sistemas.
+
+### Conceito consolidado durante a fase
+
+Foi validado o comportamento de `min-width: 0` em componentes que participam de Grid e recebem conteúdos que precisam acompanhar a largura disponível.
+
 ---
 
 # 8. Fase 4 — Formulários
 
-**Status:** ⏳ Planejada
+**Status:** ▶ Próxima
+
+### Objetivo
+
+Construir os componentes de formulário do Template de forma reutilizável, acessível e consistente com o Design System.
 
 ### Escopo
 
@@ -159,6 +201,8 @@ A Fase 2 deverá trabalhar sobre a estrutura existente, sem recriar o Layout Bas
 - Upload de Arquivos;
 - estados de formulário;
 - validação visual.
+
+A Fase 4 deverá utilizar o Layout Base e os componentes consolidados nas fases anteriores.
 
 ---
 
@@ -266,23 +310,26 @@ Fase 1.2
 
 Fase 2
 → Layout responsivo e interativo validado            ✅
+
+Fase 3
+→ Dashboard com KPIs, Cards, gráfico e Alert         ✅
 ```
 
 ---
 
 # 15. Próximo marco
 
-**Fase 3 — Dashboard**
+**Fase 4 — Formulários**
 
 Objetivo imediato:
 
-> construir a primeira tela funcional do template utilizando o Layout Base e os componentes já consolidados.
+> construir os componentes de formulário reutilizáveis que servirão de base para futuras telas de cadastro, edição e configuração.
 
 ---
 
 # 16. Progresso geral
 
-**40%**
+**50%**
 
 O indicador considera as Fases 0 a 7.
 

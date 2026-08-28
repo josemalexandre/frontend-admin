@@ -104,7 +104,7 @@ body
 
 ### Metodologia de aprendizagem
 
-As quatro perguntas obrigatórias de consolidação foram **suprimidas**.
+As quatro perguntas obrigatórias de consolidação foram suprimidas.
 
 Elas poderão ser utilizadas quando houver dúvida conceitual relevante, mas não constituem requisito de todas as etapas.
 
@@ -115,7 +115,35 @@ O aprendizado será aprofundado quando:
 - uma decisão arquitetural exigir compreensão;
 - a implementação apresentar comportamento inesperado.
 
-O objetivo é preservar o aprendizado sem transformar o desenvolvimento em uma sequência excessiva de microtarefas.
+### Ciclo específico para CSS e HTML
+
+Para HTML e CSS, a metodologia consolidada também seguirá o princípio:
+
+```text
+Especificação
+↓
+Implementação pelo usuário
+↓
+Validação visual
+↓
+Revisão do arquivo
+↓
+Explicação didática
+```
+
+Para HTML, a especificação deve priorizar a representação da estrutura em árvore.
+
+Para CSS, a especificação deve apresentar as propriedades no formato objetivo definido pelo projeto.
+
+Após a implementação, a revisão deverá explicar as propriedades utilizadas, incluindo:
+
+- o que a propriedade significa;
+- por que foi escolhida;
+- qual responsabilidade possui no componente;
+- como se relaciona com as demais propriedades;
+- como influencia o comportamento responsivo, quando aplicável.
+
+O objetivo é que a implementação funcione simultaneamente como desenvolvimento e aprendizado prático.
 
 ### Princípio de produtividade
 
@@ -164,7 +192,10 @@ A integração será implementada somente quando fizer sentido para a etapa.
 │   │   │   ├── sidebar.css
 │   │   │   ├── navbar.css
 │   │   │   ├── breadcrumb.css
-│   │   │   └── page-header.css
+│   │   │   ├── page-header.css
+│   │   │   ├── kpi.css
+│   │   │   ├── card.css
+│   │   │   └── alert.css
 │   │   ├── layout
 │   │   │   └── app.css
 │   │   └── pages
@@ -217,6 +248,12 @@ components/navbar.css
 components/breadcrumb.css
 ↓
 components/page-header.css
+↓
+components/kpi.css
+↓
+components/card.css
+↓
+components/alert.css
 ```
 
 ---
@@ -244,6 +281,7 @@ sidebar__footer
 sidebar__link--active
 
 navbar
+navbar__menu
 navbar__title
 navbar__actions
 
@@ -256,6 +294,25 @@ page-header__actions
 
 page-content
 page-container
+
+dashboard-kpis
+kpi
+kpi__label
+kpi__value
+kpi__description
+
+dashboard-cards
+card
+card__header
+card__body
+card__footer
+
+alert
+alert__icon
+alert__content
+alert__title
+alert__message
+alert__action
 ```
 
 BEM é utilizado como convenção de nomenclatura, sem aplicação rígida quando isso adicionar complexidade desnecessária.
@@ -272,6 +329,8 @@ Grid é usado para estruturas bidimensionais, especialmente o layout principal:
 → grid-template-columns: 240px 1fr
 → min-height: 100vh
 ```
+
+Também é utilizado quando o componente possui uma distribuição bidimensional clara, como os conjuntos de KPIs, Cards e a estrutura interna do Alert.
 
 Flexbox é usado para distribuição e alinhamento em uma dimensão:
 
@@ -448,7 +507,8 @@ Princípios:
 - ícones decorativos sem informação redundante;
 - estados não dependentes exclusivamente de cor;
 - Breadcrumb utiliza `nav` com `aria-label`;
-- página atual do Breadcrumb utiliza `aria-current="page"`.
+- página atual do Breadcrumb utiliza `aria-current="page"`;
+- ícones decorativos do Alert utilizam `aria-hidden="true"`.
 
 ---
 
@@ -459,6 +519,10 @@ A interface é responsiva para Desktop, Notebook, Tablet e Smartphone.
 Estratégia: Desktop First, evoluindo progressivamente.
 
 A Fase 2 consolidou o comportamento responsivo do Layout Base, com breakpoint principal em `640px`, Sidebar móvel, overlay e controles de abertura/fechamento.
+
+Os componentes do Dashboard também devem respeitar a largura disponível, evitando overflow horizontal.
+
+O `.card` e o `.card__body` utilizam `min-width: 0` quando necessário para permitir que conteúdos internos, como gráficos, acompanhem o espaço disponível.
 
 Não devem ser criados novos breakpoints sem necessidade técnica concreta.
 
@@ -503,6 +567,8 @@ Links atualmente em `href="#"` são placeholders e futuramente poderão utilizar
 14. Não confundir bibliotecas independentes com frameworks de UI.
 15. Manter CSS puro compreensível para posterior comparação com Bootstrap.
 16. Não criar microetapas sem necessidade real.
+17. Para HTML e CSS, especificar antes de implementar e revisar didaticamente após a implementação.
+18. Não transformar uma biblioteca utilizada para demonstração em decisão arquitetural permanente sem consolidação explícita.
 
 ---
 

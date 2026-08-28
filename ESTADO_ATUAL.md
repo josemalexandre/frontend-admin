@@ -22,9 +22,11 @@
 
 **Fase 2 — Layout:** concluída, revisada e validada.
 
-**Próxima fase:** Fase 3 — Dashboard.
+**Fase 3 — Dashboard:** concluída, revisada e validada.
 
-A Fase 2 evoluiu o Layout Base já consolidado para comportamento responsivo, preservando sua estrutura e evitando complexidade desnecessária.
+**Próxima fase:** Fase 4 — Formulários.
+
+A Fase 3 utilizou o Layout Base consolidado nas fases anteriores e acrescentou os primeiros componentes reais de conteúdo do Template.
 
 ---
 
@@ -47,7 +49,10 @@ A Fase 2 evoluiu o Layout Base já consolidado para comportamento responsivo, pr
 │   │   │   ├── sidebar.css
 │   │   │   ├── navbar.css
 │   │   │   ├── breadcrumb.css
-│   │   │   └── page-header.css
+│   │   │   ├── page-header.css
+│   │   │   ├── kpi.css
+│   │   │   ├── card.css
+│   │   │   └── alert.css
 │   │   ├── layout
 │   │   │   └── app.css
 │   │   └── pages
@@ -75,46 +80,37 @@ A Fase 2 evoluiu o Layout Base já consolidado para comportamento responsivo, pr
             │   │   └── .page-header__title
             │   └── .page-header__actions
             └── section.page-content
+                ├── .dashboard-kpis
+                │   ├── .kpi
+                │   │   ├── .kpi__label
+                │   │   ├── .kpi__value
+                │   │   └── .kpi__description
+                │   ├── .kpi
+                │   ├── .kpi
+                │   └── .kpi
+                │
+                ├── .dashboard-cards
+                │   ├── .card
+                │   │   ├── .card__header
+                │   │   ├── .card__body
+                │   │   └── .card__footer
+                │   │
+                │   └── .card
+                │       ├── .card__header
+                │       ├── .card__body
+                │       └── .card__footer
+                │
+                └── .alert
+                    ├── .alert__icon
+                    ├── .alert__content
+                    │   ├── .alert__title
+                    │   └── .alert__message
+                    └── .alert__action
 ```
-
-### `.app`
-
-```text
-display: grid
-grid-template-columns: 240px 1fr
-min-height: 100vh
-```
-
-### `.app__content`
-
-```text
-display: flex
-flex-direction: column
-min-width: 0
-```
-
-### `main`
-
-```text
-flex: 1
-min-width: 0
-background: var(--color-background)
-padding: var(--space-6)
-```
-
-### `.page-container`
-
-```text
-width: 100%
-max-width: 1200px
-margin-inline: auto
-```
-
-Responsabilidade: limitar e centralizar o conteúdo interno do `main`.
 
 ---
 
-## 5. Componentes Consolidados
+## 5. Layout e Componentes Consolidados
 
 ### Sidebar
 
@@ -216,27 +212,107 @@ Não foi criado `page-content.css`, pois não existe responsabilidade visual que
 
 ---
 
-## 6. `index.html`
+## 6. Dashboard
 
-Estrutura validada:
+Status: **implementado, revisado, responsivo e validado**.
+
+### KPIs
+
+Estrutura:
 
 ```text
-.app
-├── aside.sidebar
-└── .app__content
-    ├── header.navbar
-    └── main
-        └── .page-container
-            ├── nav.breadcrumb
-            ├── header.page-header
-            └── section.page-content
+.dashboard-kpis
+├── .kpi
+│   ├── .kpi__label
+│   ├── .kpi__value
+│   └── .kpi__description
+├── .kpi
+├── .kpi
+└── .kpi
 ```
 
-A estrutura utiliza HTML semântico e está preparada para futura integração com Jinja2.
+KPIs demonstrativos:
+
+- Total de Registros;
+- Em andamento;
+- Concluídos;
+- Pendências.
+
+Cada KPI representa uma unidade independente de informação.
+
+### Cards
+
+Estrutura:
+
+```text
+.dashboard-cards
+├── .card
+│   ├── .card__header
+│   ├── .card__body
+│   └── .card__footer
+│
+└── .card
+    ├── .card__header
+    ├── .card__body
+    └── .card__footer
+```
+
+Cards demonstrativos:
+
+- Atividades recentes;
+- Evolução.
+
+O segundo Card contém um gráfico demonstrativo.
+
+### Gráfico
+
+Foi integrado um gráfico genérico de evolução mensal apenas para demonstrar visualmente como gráficos podem ocupar um componente do Template.
+
+A biblioteca utilizada para a demonstração não constitui decisão tecnológica permanente para os futuros sistemas.
+
+No projeto real, a implementação poderá utilizar Plotly, Chart.js ou outra biblioteca adequada à necessidade.
+
+Durante a validação responsiva, foi necessário permitir que `.card` e `.card__body` encolhessem adequadamente com `min-width: 0`, evitando overflow horizontal em telas estreitas.
+
+### Alert
+
+Estrutura:
+
+```text
+.alert
+├── .alert__icon
+├── .alert__content
+│   ├── .alert__title
+│   └── .alert__message
+└── .alert__action
+```
+
+O Dashboard utiliza um alerta demonstrativo de atenção relacionado às pendências.
+
+O componente utiliza `--color-warning` e foi estruturado para permitir futura criação de variantes sem duplicar a estrutura.
+
+O espaçamento superior foi definido no próprio componente:
+
+```text
+.alert
+→ margin-top: var(--space-4)
+```
+
+Isso mantém a relação visual entre Cards e Alert no componente, sem atribuir responsabilidade visual ao `.page-content`.
 
 ---
 
-## 7. `main.css`
+## 7. `index.html`
+
+O `index.html` permanece como referência do Layout Base e estrutura inicial do Template.
+
+Com a evolução para páginas específicas, o Dashboard passou a representar uma tela de conteúdo própria, sem transformar o `index.html` em um clone de cada nova página.
+
+A arquitetura preserva a ideia de que o Layout Base será posteriormente convertido para `base.html`, enquanto conteúdos específicos serão organizados como páginas Jinja.
+
+---
+
+## 8. `main.css`
 
 É o ponto de entrada do CSS.
 
@@ -258,41 +334,34 @@ navbar.css
 breadcrumb.css
 ↓
 page-header.css
+↓
+kpi.css
+↓
+card.css
+↓
+alert.css
 ```
 
 ---
 
-## 8. Fase 1.2 — Resultado Final
+## 9. Fase 1 — Resultado Final
 
-A Fase 1.2 foi concluída com:
+A Fase 1 foi concluída com:
 
-```text
-1.2.1 → Estrutura Visual do Layout Base        ✅
-1.2.2 → Dimensões e Superfícies                ✅
-1.2.3 → Sidebar: Estrutura e Navegação         ✅
-1.2.4 → Sidebar: Ícones e Estados              ✅
-1.2.5 → Navbar: Estrutura e Layout             ✅
-1.2.6 → Consolidação da Área Principal         ✅
-1.2.7 → Estrutura de Conteúdo da Página        ✅
-1.2.8 → Espaçamento e Ritmo Vertical            ✅
-1.2.9 → Container de Conteúdo                  ✅
-```
-
-### Critério de encerramento
-
-A fase foi considerada concluída porque:
-
-- o Application Shell está estruturado;
-- Sidebar e Navbar estão consolidadas;
-- a área principal está definida;
-- Breadcrumb, Page Header e Page Content estão estruturados;
-- o conteúdo possui container com largura máxima;
-- o espaçamento utiliza Design Tokens;
-- não existem pendências estruturais relevantes para iniciar os componentes reais.
+- estrutura inicial;
+- Design System Base;
+- Layout Base;
+- Sidebar;
+- Navbar;
+- área principal;
+- Breadcrumb;
+- Page Header;
+- Page Content;
+- container de conteúdo.
 
 ---
 
-## 9. Fase 2 — Resultado Final
+## 10. Fase 2 — Resultado Final
 
 A Fase 2 foi concluída com:
 
@@ -339,38 +408,72 @@ main.js
 
 ---
 
-## 10. Pendências
+## 11. Fase 3 — Resultado Final
 
-- conteúdo real do Dashboard;
+A Fase 3 foi concluída com:
+
+- primeira estrutura funcional de Dashboard;
+- KPIs;
+- Cards;
+- gráfico demonstrativo;
+- Alert;
+- organização visual do conteúdo;
+- responsividade dos componentes;
+- validação em desktop e smartphone;
+- utilização dos Design Tokens;
+- utilização pragmática de BEM;
+- correção de dimensionamento com `min-width: 0`;
+- preservação de `.page-content` sem CSS próprio.
+
+### Componentes consolidados
+
+```text
+Dashboard
+├── dashboard-kpis
+├── kpi
+├── dashboard-cards
+├── card
+└── alert
+```
+
+---
+
+## 12. Pendências
+
 - componentes das fases posteriores;
 - integração com Flask/Jinja2;
 - refatoração e preparação final para Flask;
 - reconstrução comparativa com Bootstrap.
 
+Não existem pendências residuais relevantes da Fase 3.
+
 ---
 
-## 11. Próxima Fase
+## 13. Próxima Fase
 
-### Fase 3 — Dashboard
+### Fase 4 — Formulários
 
 Objetivo:
 
-- construir a estrutura visual do Dashboard;
-- desenvolver Cards;
-- desenvolver KPIs;
-- integrar visualmente gráficos;
-- organizar alertas e conteúdo do Dashboard;
-- preservar a reutilização dos componentes e o Design System.
+- construir componentes de formulário reutilizáveis;
+- trabalhar Inputs;
+- Selects;
+- Checkboxes;
+- Radio Buttons;
+- Upload de Arquivos;
+- estados de formulário;
+- validação visual.
 
-A Fase 3 deve utilizar o Layout Base e os componentes consolidados nas Fases 1 e 2, sem recriá-los.
+A Fase 4 deverá utilizar o Layout Base, o Design System e os padrões de componentes consolidados nas fases anteriores.
 
 ---
 
-## 12. Progresso Geral
+## 14. Progresso Geral
 
-**40%**
+**50%**
 
-A estimativa considera o peso relativo das Fases 0 a 7 e o estado efetivo de implementação. A conclusão da Fase 2 representa um avanço relevante porque o Layout Base deixou de ser apenas estrutural e passou a possuir comportamento responsivo e interativo validado.
+A estimativa considera o peso relativo das Fases 0 a 7 e o estado efetivo de implementação.
+
+O projeto já possui a identidade visual, a fundação, o Layout Base responsivo e a primeira tela de conteúdo com componentes reutilizáveis.
 
 As Fases 8 e 9 permanecem no escopo do projeto, mas continuam fora do denominador do progresso principal.
-
