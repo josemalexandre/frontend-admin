@@ -8,4 +8,5 @@
 @import "./components/page-header.css";
 @import "./components/kpis.css";
 @import "./components/card.css";
-@import "./components/alert.css"
+@import "./components/alert.css";
+@import "./components/form.css";
