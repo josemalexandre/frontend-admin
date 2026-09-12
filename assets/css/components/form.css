@@ -38,3 +38,98 @@
     outline: none;
     border-color: var(--color-primary);
 }
+
+.form__group:has(input[type="checkbox"]) {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.form__group input[type="checkbox"] {
+    width: auto;
+}
+
+.form__group input[type="checkbox"]+label {
+    margin-bottom: 0;
+}
+
+.form__group fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.form__group fieldset legend {
+    margin-bottom: var(--space-2);
+    color: var(--color-text-primary);
+    font-weight: 500;
+}
+
+.form__radio {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.form__radio input[type="radio"] {
+    width: auto;
+}
+
+.form__radio label {
+    display: inline;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.form__group input[type="file"] {
+    width: 100%;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--color-text-primary);
+}
+
+.form__group input:disabled {
+    background: var(--color-background);
+    color: var(--color-text-secondary);
+    cursor: not-allowed;
+}
+
+.form__group select:disabled {
+    background: var(--color-background);
+    color: var(--color-text-secondary);
+    cursor: not-allowed;
+}
+
+.form__group--error input {
+    border-color: var(--color-error);
+}
+
+.form__group--error select {
+    border-color: var(--color-error);
+}
+
+.form__group--error .form__message {
+    color: var(--color-error);
+    font-size: var(--text-small);
+}
+
+.form__group--success input {
+    border-color: var(--color-success);
+}
+
+.form__group--success select {
+    border-color: var(--color-success);
+}
+
+.form__group--success .form__message {
+    color: var(--color-success);
+    font-size: var(--text-small);
+}
+
+.form__group input:user-valid {
+    border-color: var(--color-success);
+}
+
+.form__group input:user-invalid {
+    border-color: var(--color-error);
+}

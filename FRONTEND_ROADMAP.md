@@ -39,7 +39,7 @@ O percentual geral é uma estimativa ponderada pelo escopo e pela relevância da
 
 Para o indicador principal de desenvolvimento, o cálculo considera as **Fases 0 a 7**.
 
-As Fases 8 e 9 continuam pertencendo ao projeto, mas ficam fora do denominador do progresso principal por representarem, respectivamente, preparação/integração com Flask e reconstrução comparativa com Bootstrap.
+As Fases 8 e 9 continuam pertencendo ao projeto, mas ficam fora do denominador do progresso principal.
 
 ---
 
@@ -102,12 +102,6 @@ Fase 9 → Bootstrap
 1.2.9 → Container de Conteúdo                  ✅
 ```
 
-### Marco de encerramento da Fase 1.2
-
-O Layout Base atingiu o nível necessário para receber os componentes reais do template.
-
-Não serão criadas novas microetapas estruturais antes da evolução para as fases de conteúdo.
-
 ---
 
 # 6. Fase 2 — Layout
@@ -127,8 +121,6 @@ Evoluir o Layout Base já consolidado para comportamento real em diferentes tama
 - adaptação para tablet;
 - adaptação para smartphone;
 - preservação da usabilidade.
-
-A Fase 2 trabalhou sobre a estrutura existente, sem recriar o Layout Base.
 
 ---
 
@@ -153,17 +145,9 @@ Construir a primeira tela de conteúdo do Template utilizando o Layout Base e os
 ```text
 Dashboard
 ├── KPIs
-│   └── 4 indicadores demonstrativos
-│
 ├── Cards
-│   ├── Atividades recentes
-│   └── Evolução
-│
 ├── Gráfico
-│   └── evolução mensal demonstrativa
-│
 └── Alert
-    └── alerta de atenção
 ```
 
 ### Validações
@@ -173,22 +157,15 @@ Dashboard
 - organização responsiva;
 - ausência de overflow horizontal relevante;
 - utilização dos Design Tokens;
-- componentes estruturados com BEM;
-- preservação de `.page-content` sem CSS próprio.
-
-O gráfico utilizado na fase possui finalidade demonstrativa. A biblioteca empregada não constitui decisão tecnológica permanente para os futuros sistemas.
-
-### Conceito consolidado durante a fase
-
-Foi validado o comportamento de `min-width: 0` em componentes que participam de Grid e recebem conteúdos que precisam acompanhar a largura disponível.
+- componentes estruturados com BEM.
 
 ---
 
 # 8. Fase 4 — Formulários
 
-**Status:** ▶ Próxima
+**Status:** ✅ Concluída
 
-### Objetivo
+## Objetivo
 
 Construir os componentes de formulário do Template de forma reutilizável, acessível e consistente com o Design System.
 
@@ -202,13 +179,73 @@ Construir os componentes de formulário do Template de forma reutilizável, aces
 - estados de formulário;
 - validação visual.
 
-A Fase 4 deverá utilizar o Layout Base e os componentes consolidados nas fases anteriores.
+### Resultado
+
+```text
+Formulários
+├── Inputs
+├── Selects
+├── Checkboxes
+├── Radio Buttons
+├── Upload de Arquivos
+├── Estados
+└── Validação
+```
+
+### Validações
+
+- campos obrigatórios;
+- `minlength`;
+- `maxlength`;
+- estados de foco;
+- estados desabilitados;
+- estados de erro;
+- estados de sucesso;
+- `:user-valid`;
+- `:user-invalid`;
+- responsividade;
+- interação dos controles;
+- acessibilidade e semântica;
+- ausência de overflow horizontal relevante.
+
+### Conceitos consolidados
+
+- associação entre `label` e controles por `for`/`id`;
+- agrupamento semântico com `fieldset` e `legend`;
+- agrupamento de Radio Buttons por `name`;
+- validação nativa do HTML;
+- diferença entre `:valid`/`:invalid` e `:user-valid`/`:user-invalid`;
+- separação entre validação de entrada, estado visual e regra de negócio;
+- utilização de CSS para representar estados sem introduzir JavaScript desnecessário.
+
+### Componentes consolidados
+
+```text
+form
+├── form__group
+├── form__radio
+├── form__message
+└── form__actions
+```
+
+### Arquivos
+
+```text
+assets/css/components/form.css
+pages/forms.html
+```
+
+A página `forms.html` possui finalidade de demonstração e laboratório dos componentes.
 
 ---
 
 # 9. Fase 5 — CRUD
 
-**Status:** ⏳ Planejada
+**Status:** ▶ Próxima
+
+## Objetivo
+
+Construir os elementos necessários para telas de consulta, pesquisa e manutenção de registros.
 
 ### Escopo
 
@@ -219,6 +256,8 @@ A Fase 4 deverá utilizar o Layout Base e os componentes consolidados nas fases 
 - ações;
 - estados vazios;
 - mensagens de resultado.
+
+A Fase 5 deverá utilizar os componentes e padrões consolidados nas fases anteriores.
 
 ---
 
@@ -313,26 +352,31 @@ Fase 2
 
 Fase 3
 → Dashboard com KPIs, Cards, gráfico e Alert         ✅
+
+Fase 4
+→ Formulários, estados e validação consolidados      ✅
 ```
 
 ---
 
 # 15. Próximo marco
 
-**Fase 4 — Formulários**
+**Fase 5 — CRUD**
 
 Objetivo imediato:
 
-> construir os componentes de formulário reutilizáveis que servirão de base para futuras telas de cadastro, edição e configuração.
+> construir os elementos necessários para telas de consulta e manutenção de registros, incluindo tabelas, pesquisa, filtros, paginação, ações, estados vazios e mensagens de resultado.
 
 ---
 
 # 16. Progresso geral
 
-**50%**
+**60%**
 
 O indicador considera as Fases 0 a 7.
 
 As Fases 8 e 9 continuam no escopo do projeto, mas não participam do denominador do progresso principal.
 
 O percentual não é calculado pela simples quantidade de tarefas ou arquivos concluídos; considera o peso relativo das partes do produto e o estágio efetivo de implementação.
+
+A conclusão da Fase 4 elevou o progresso estimado de 50% para 60%, considerando a relevância dos componentes de formulário e o ciclo completo de implementação, validação e revisão realizado.

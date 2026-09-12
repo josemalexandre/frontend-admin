@@ -92,15 +92,7 @@ Cada etapa seguirá, quando aplicável:
 
 Uma etapa só é encerrada após implementação, validação visual, revisão técnica/arquitetural e documentação correspondente.
 
-As especificações devem ser objetivas, por exemplo:
-
-```text
-body
-→ Inter
-→ 1rem
-→ weight 400
-→ line-height 1.5
-```
+As especificações devem ser objetivas.
 
 ### Metodologia de aprendizagem
 
@@ -117,7 +109,7 @@ O aprendizado será aprofundado quando:
 
 ### Ciclo específico para CSS e HTML
 
-Para HTML e CSS, a metodologia consolidada também seguirá o princípio:
+Para HTML e CSS:
 
 ```text
 Especificação
@@ -195,7 +187,8 @@ A integração será implementada somente quando fizer sentido para a etapa.
 │   │   │   ├── page-header.css
 │   │   │   ├── kpi.css
 │   │   │   ├── card.css
-│   │   │   └── alert.css
+│   │   │   ├── alert.css
+│   │   │   └── form.css
 │   │   ├── layout
 │   │   │   └── app.css
 │   │   └── pages
@@ -204,6 +197,7 @@ A integração será implementada somente quando fizer sentido para a etapa.
 │   ├── images
 │   └── js
 └── pages
+    └── forms.html
 ```
 
 A estrutura representa a organização física e arquitetural atual. Novos componentes ou mudanças de camadas devem ser tratados como alterações estruturais.
@@ -230,7 +224,7 @@ main.css
 - `pages`: regras específicas de páginas.
 - `main.css`: ponto de entrada e importação.
 
-`main.css` mantém a ordem geral do mais fundamental para o mais específico:
+`main.css` mantém a ordem geral:
 
 ```text
 reset.css
@@ -254,7 +248,29 @@ components/kpi.css
 components/card.css
 ↓
 components/alert.css
+↓
+components/form.css
 ```
+
+### Formulários
+
+O `form.css` é um componente reutilizável da camada `components`.
+
+Responsabilidades:
+
+- agrupamento de campos;
+- labels;
+- inputs;
+- selects;
+- checkboxes;
+- radio buttons;
+- upload de arquivos;
+- foco;
+- estado desabilitado;
+- estados de erro e sucesso;
+- feedback visual da validação nativa.
+
+O CSS não determina regras de negócio. Ele apenas representa visualmente estados determinados pelo HTML, navegador ou aplicação.
 
 ---
 
@@ -313,6 +329,15 @@ alert__content
 alert__title
 alert__message
 alert__action
+
+form
+form__group
+form__radio
+form__message
+form__actions
+
+form__group--error
+form__group--success
 ```
 
 BEM é utilizado como convenção de nomenclatura, sem aplicação rígida quando isso adicionar complexidade desnecessária.
@@ -330,39 +355,7 @@ Grid é usado para estruturas bidimensionais, especialmente o layout principal:
 → min-height: 100vh
 ```
 
-Também é utilizado quando o componente possui uma distribuição bidimensional clara, como os conjuntos de KPIs, Cards e a estrutura interna do Alert.
-
-Flexbox é usado para distribuição e alinhamento em uma dimensão:
-
-```text
-.app__content
-→ display: flex
-→ flex-direction: column
-→ min-width: 0
-
-.sidebar
-→ display: flex
-→ flex-direction: column
-
-.sidebar__link
-→ display: flex
-→ align-items: center
-→ gap: var(--space-3)
-
-.navbar
-→ display: flex
-→ align-items: center
-
-.breadcrumb
-→ display: flex
-→ align-items: center
-→ gap: var(--space-2)
-
-.page-header
-→ display: flex
-→ align-items: center
-→ justify-content: space-between
-```
+Flexbox é usado para distribuição e alinhamento em uma dimensão.
 
 Não utilizar Grid/Flexbox quando o fluxo normal do HTML já resolver o problema.
 
@@ -482,7 +475,7 @@ closeSidebar()
 → concentra a lógica reutilizável de fechamento
 ```
 
-O JavaScript não deve assumir responsabilidades de apresentação que pertencem ao CSS.
+A validação básica dos formulários utiliza prioritariamente os mecanismos nativos do HTML e CSS, sem JavaScript adicional quando este não for necessário.
 
 ---
 
@@ -498,6 +491,15 @@ active
 disabled
 ```
 
+Para formulários também são utilizados:
+
+```text
+:user-valid
+:user-invalid
+.form__group--error
+.form__group--success
+```
+
 Princípios:
 
 - HTML semântico;
@@ -508,7 +510,11 @@ Princípios:
 - estados não dependentes exclusivamente de cor;
 - Breadcrumb utiliza `nav` com `aria-label`;
 - página atual do Breadcrumb utiliza `aria-current="page"`;
-- ícones decorativos do Alert utilizam `aria-hidden="true"`.
+- ícones decorativos do Alert utilizam `aria-hidden="true"`;
+- campos de formulário utilizam `label` associado ao controle;
+- grupos de Radio Buttons utilizam `fieldset` e `legend`.
+
+A validação nativa do HTML é utilizada para regras simples de entrada, enquanto regras de negócio permanecem sob responsabilidade da aplicação.
 
 ---
 
@@ -523,6 +529,8 @@ A Fase 2 consolidou o comportamento responsivo do Layout Base, com breakpoint pr
 Os componentes do Dashboard também devem respeitar a largura disponível, evitando overflow horizontal.
 
 O `.card` e o `.card__body` utilizam `min-width: 0` quando necessário para permitir que conteúdos internos, como gráficos, acompanhem o espaço disponível.
+
+Os formulários utilizam os recursos de largura disponíveis do Layout Base, mantendo os controles com largura adequada ao espaço do container.
 
 Não devem ser criados novos breakpoints sem necessidade técnica concreta.
 
@@ -569,6 +577,9 @@ Links atualmente em `href="#"` são placeholders e futuramente poderão utilizar
 16. Não criar microetapas sem necessidade real.
 17. Para HTML e CSS, especificar antes de implementar e revisar didaticamente após a implementação.
 18. Não transformar uma biblioteca utilizada para demonstração em decisão arquitetural permanente sem consolidação explícita.
+19. Utilizar validação nativa do HTML quando ela atender às regras simples de entrada.
+20. Não utilizar JavaScript para validação quando HTML e CSS forem suficientes.
+21. Manter separadas as regras de entrada, a representação visual dos estados e as regras de negócio da aplicação.
 
 ---
 

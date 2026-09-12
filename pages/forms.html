@@ -74,11 +74,11 @@
                         <form action="" class="form">
                             <div class="form__group">
                                 <label for="razao_social">Razão Social</label>
-                                <input type="text" name="razao_social" id="razao_social">
+                                <input type="text" name="razao_social" id="razao_social" required>
                             </div>
                             <div class="form__group">
                                 <label for="cnpj">CNPJ</label>
-                                <input type="text" name="cnpj" id="cnpj">
+                                <input type="text" name="cnpj" id="cnpj" required minlength="14" maxlength="14">
                             </div>
                             <div class="form__group">
                                 <label for="situacao">Situação</label>
@@ -87,6 +87,31 @@
                                     <option value="inativa">Inativa</option>
                                     <option value="suspensa">Suspensa</option>
                                 </select>
+                            </div>
+                            <div class="form__group">
+                                <input type="checkbox" name="ativo" id="ativo" value="sim">
+                                <label for="ativo">Empresa ativa</label>
+                            </div>
+                            <div class="form__group">
+                                <fieldset>
+                                    <legend>Tipos de Empresa</legend>
+                                    <div class="form__radio">
+                                        <input type="radio" name="tipo_empresa" id="pj" value="pj">
+                                        <label for="pj">Pessoa Jurídica</label>
+                                    </div>
+                                    <div class="form__radio">
+                                        <input type="radio" name="tipo_empresa" id="pf" value="pf">
+                                        <label for="pf">Pessoa Física</label>
+                                    </div>
+                                    <div class="form__radio">
+                                        <input type="radio" name="tipo_empresa" id="outro" value="outro">
+                                        <label for="outro">Outros</label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="form__group">
+                                <label for="documento">Documento</label>
+                                <input type="file" name="documento" id="documento" accept=".pdf">
                             </div>
                             <div class="form__actions">
                                 <button type="submit">Salvar</button>
