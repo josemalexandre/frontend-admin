@@ -16,7 +16,9 @@ Sistemas-alvo incluem LicenSys, Sistema Financeiro, Sistema Pericial, Controle P
 
 ## 2. Estratégia de implementação
 
-### Primeira implementação
+O Template Flask será desenvolvido em duas implementações visuais antes da integração com Flask/Jinja.
+
+### Primeira implementação — versão Vanilla
 
 - HTML5
 - CSS3
@@ -26,15 +28,49 @@ Sistemas-alvo incluem LicenSys, Sistema Financeiro, Sistema Pericial, Controle P
 - bibliotecas JavaScript apenas quando indispensáveis ou solicitadas
 - bibliotecas independentes, como Bootstrap Icons, podem ser utilizadas
 
-### Segunda implementação
+Nesta etapa, a estrutura, os componentes, o Design System e os comportamentos são construídos e validados sem depender de um framework CSS.
 
-Após a versão em código puro, o mesmo projeto será reconstruído com Bootstrap 5.3+ para comparar:
+### Segunda implementação — versão Bootstrap
 
-- abstrações;
-- componentes;
-- convenções;
-- CSS próprio x Bootstrap;
-- quando utilizar componentes próprios.
+Após a conclusão da versão em código puro, o mesmo template será reconstruído/adaptado com Bootstrap 5.3+.
+
+A intenção não é apagar a implementação anterior e escrever um projeto sem relação com ela.
+
+A versão Bootstrap deverá partir do HTML e da estrutura conceitual já consolidados, avaliando componente por componente:
+
+- quais classes próprias podem ser substituídas;
+- quais responsabilidades passam a ser atendidas pelo Bootstrap;
+- quais regras continuam exigindo CSS próprio;
+- quais componentes e utilitários do Bootstrap são adequados;
+- quais decisões da versão Vanilla permanecem válidas.
+
+O objetivo é produzir duas implementações comparáveis do mesmo template:
+
+```text
+Template Flask — Vanilla
+        ↕ comparação
+Template Flask — Bootstrap
+```
+
+### Integração com Flask/Jinja
+
+A integração com Flask/Jinja ocorrerá somente depois que as duas implementações visuais estiverem concluídas e comparadas.
+
+Dessa forma, quando Flask/Jinja entrar em cena, a base visual já estará definida.
+
+A etapa final deverá transformar a solução visual consolidada em uma estrutura efetivamente reutilizável em aplicações Flask, incluindo:
+
+- `base.html`;
+- herança de templates;
+- includes;
+- macros, quando justificadas;
+- organização de `templates/` e `static/`;
+- `url_for()`;
+- renderização dinâmica;
+- integração com Blueprints;
+- formulários e mensagens quando aplicável.
+
+A integração com Flask/Jinja não deve ser usada para decidir novamente a estrutura visual básica do template, salvo quando surgir uma necessidade técnica real.
 
 ---
 
@@ -74,6 +110,8 @@ O template deverá contemplar, entre outros:
 - Configurações;
 - integração visual de gráficos;
 - componentes reutilizáveis.
+
+O escopo das fases poderá ser reorganizado quando isso melhorar a coerência arquitetural, sem criar etapas artificiais.
 
 ---
 
@@ -145,23 +183,46 @@ Não criar microetapas artificiais apenas para manter a numeração.
 
 ---
 
-## 5. Conexão com Flask
+## 5. Conexão futura com Flask
 
-O projeto deve manter desde o início uma visão de futura integração com:
+A integração com Flask/Jinja é deliberadamente deixada para a etapa final do roadmap.
 
-- Jinja2;
-- templates;
-- static;
-- Blueprints;
-- `base.html`;
-- includes;
-- macros;
-- formulários;
-- Flash Messages;
-- renderização dinâmica;
-- `url_for()`.
+A ordem conceitual é:
 
-A integração será implementada somente quando fizer sentido para a etapa.
+```text
+HTML + CSS + JS puro
+        ↓
+Template visual completo — Vanilla
+        ↓
+Bootstrap
+        ↓
+Template visual completo — Bootstrap
+        ↓
+Consolidação final
+        ↓
+Flask/Jinja
+        ↓
+Template Flask integrado
+        ↓
+Aplicação real
+```
+
+A estrutura futura esperada poderá utilizar:
+
+```text
+templates/
+├── base.html
+├── includes/
+│   ├── sidebar.html
+│   └── navbar.html
+└── pages/
+
+static/
+├── css/
+└── js/
+```
+
+A integração deverá preservar os princípios arquiteturais já definidos, sem transformar Jinja em uma camada de apresentação excessivamente complexa.
 
 ---
 
@@ -196,6 +257,7 @@ A integração será implementada somente quando fizer sentido para a etapa.
 │   ├── icons
 │   ├── images
 │   └── js
+│       └── main.js
 └── pages
     └── forms.html
 ```
@@ -388,6 +450,22 @@ Identidade:
 --color-white: #FFFFFF
 ```
 
+A paleta definida acima representa a identidade visual atual do Template, mas não deve ser tratada como identidade obrigatória dos sistemas que utilizarem a base.
+
+A arquitetura deve separar:
+
+```text
+Estrutura dos componentes
+        +
+Identidade visual
+```
+
+A estrutura dos componentes deve ser reutilizável, enquanto a identidade visual deve permanecer suficientemente centralizada e parametrizável para permitir a adaptação a diferentes aplicações.
+
+Em futuros sistemas, a paleta de cores poderá ser alterada sem exigir a reconstrução dos componentes. Sempre que possível, essa personalização deverá ocorrer por meio dos Design Tokens, preservando a mesma estrutura, hierarquia visual e comportamento dos componentes.
+
+A aparência geral poderá ser próxima de referências de sistemas administrativos profissionais, mas o Template não deverá ficar preso a uma única paleta ou identidade visual.
+
 ### Espaçamento
 
 ```text
@@ -536,28 +614,95 @@ Não devem ser criados novos breakpoints sem necessidade técnica concreta.
 
 ---
 
-## 14. Integração futura
+## 13.1. Separação entre estrutura e identidade visual
 
-Estrutura futura esperada:
+A construção das telas completas, especialmente na Fase 7, deverá estabelecer uma aparência coerente de aplicação administrativa/financeira, podendo utilizar referências visuais externas como inspiração.
+
+Essa aparência deve ser entendida em duas camadas:
 
 ```text
-templates/
-├── base.html
-├── includes/
-│   ├── sidebar.html
-│   └── navbar.html
-└── pages/
+Estrutura visual
+→ composição, hierarquia, componentes, espaçamento, estados e comportamento
 
-static/
-├── css/
-└── js/
+Identidade visual
+→ paleta de cores e demais valores visuais parametrizáveis
 ```
 
-Links atualmente em `href="#"` são placeholders e futuramente poderão utilizar `{{ url_for(...) }}`.
+O Template deverá permitir que diferentes sistemas mantenham a mesma linguagem estrutural e recebam identidades visuais próprias.
+
+Por exemplo:
+
+```text
+Template Flask
+      ↓
+┌─────┼─────────────────┐
+↓     ↓                 ↓
+LicenSys   Sistema Financeiro   Sistema Pericial
+  │             │                 │
+Paleta A      Paleta B          Paleta C
+```
+
+A Fase 7 é, portanto, o momento de consolidar a composição visual de aplicação, sem transformar a paleta utilizada no Template em uma limitação para aplicações futuras.
 
 ---
 
-## 15. Regras
+## 14. Diretriz para a fase Bootstrap
+
+A versão Bootstrap não deverá ser uma cópia cega da versão Vanilla nem um projeto completamente refeito sem relação com ela.
+
+O processo será:
+
+```text
+componente Vanilla consolidado
+        ↓
+identificação das responsabilidades
+        ↓
+análise das soluções Bootstrap
+        ↓
+adaptação do HTML/classes
+        ↓
+CSS próprio complementar, se necessário
+        ↓
+validação
+        ↓
+comparação com a versão Vanilla
+```
+
+A estrutura semântica deverá ser preservada sempre que possível.
+
+O Bootstrap deverá ser utilizado quando reduzir complexidade sem prejudicar:
+
+- semântica;
+- acessibilidade;
+- clareza;
+- manutenção;
+- consistência do projeto.
+
+Classes próprias continuarão sendo utilizadas quando representarem uma responsabilidade específica do projeto que o Bootstrap não deva assumir.
+
+A etapa Bootstrap é, portanto, também uma etapa de avaliação tecnológica e não apenas de estilização.
+
+---
+
+## 15. Integração final com Flask/Jinja
+
+Somente após a conclusão e consolidação das versões Vanilla e Bootstrap será definida a implementação final com Flask/Jinja.
+
+A etapa deverá transformar a interface consolidada em uma estrutura de templates reutilizável, evitando duplicação e mantendo separadas:
+
+```text
+estrutura/apresentação
+        ↕
+templates Jinja
+        ↕
+dados e regras da aplicação
+```
+
+A aplicação real somente deverá ser construída depois dessa consolidação.
+
+---
+
+## 16. Regras
 
 1. Não adicionar complexidade sem necessidade.
 2. Não duplicar responsabilidades.
@@ -580,10 +725,13 @@ Links atualmente em `href="#"` são placeholders e futuramente poderão utilizar
 19. Utilizar validação nativa do HTML quando ela atender às regras simples de entrada.
 20. Não utilizar JavaScript para validação quando HTML e CSS forem suficientes.
 21. Manter separadas as regras de entrada, a representação visual dos estados e as regras de negócio da aplicação.
+22. A versão Bootstrap deve partir da solução Vanilla consolidada e ser comparada com ela.
+23. Flask/Jinja será integrado somente depois da consolidação das versões visuais.
+24. A implementação real do aplicativo será posterior à consolidação do Template Flask.
 
 ---
 
-## 16. Governança documental
+## 17. Governança documental
 
 ```text
 CONTEXTO_PROJETO.md
@@ -604,7 +752,7 @@ O `FRONTEND_ROADMAP.md` deve registrar o planejamento e o progresso sem reproduz
 
 ---
 
-## 17. Princípio geral
+## 18. Princípio geral
 
 Construir uma interface:
 

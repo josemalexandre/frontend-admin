@@ -8,15 +8,19 @@
 
 **Implementação atual:** HTML5 + CSS3 + JavaScript ES2023+ puro.
 
-**Bootstrap CSS:** não utilizado.
+**Bootstrap CSS:** ainda não utilizado.
 
 **Ícones:** Bootstrap Icons.
 
 **JavaScript:** utilizado no comportamento responsivo da Sidebar.
 
+O projeto encontra-se na etapa de construção da versão Vanilla do template.
+
 ---
 
-## 2. Fase Atual
+## 2. Fases Concluídas
+
+**Fase 0 — Identidade Visual:** concluída.
 
 **Fase 1 — Fundação:** concluída.
 
@@ -56,11 +60,12 @@
 │   │   │   └── form.css
 │   │   ├── layout
 │   │   │   └── app.css
-│   │   ├── fonts
-│   │   ├── icons
-│   │   ├── images
-│   │   └── js
-│   │       └── main.js
+│   │   └── pages
+│   ├── fonts
+│   ├── icons
+│   ├── images
+│   └── js
+│       └── main.js
 └── pages
     └── forms.html
 ```
@@ -412,15 +417,18 @@ Não existem pendências residuais relevantes da Fase 4.
 
 ---
 
-## 14. Pendências
+## 14. Pendências Atuais
 
 - componentes das fases posteriores;
 - CRUD;
 - componentes adicionais;
 - telas;
-- integração com Flask/Jinja2;
-- refatoração e preparação final para Flask;
-- reconstrução comparativa com Bootstrap.
+- conclusão da versão Vanilla do Template;
+- reconstrução/adaptação comparativa com Bootstrap;
+- consolidação final do Template;
+- integração com Flask/Jinja2.
+
+A integração com Flask/Jinja2 permanece propositalmente para o final do roadmap, depois da versão Vanilla e da versão Bootstrap.
 
 ---
 
@@ -443,7 +451,33 @@ A Fase 5 deverá utilizar o Layout Base, o Design System e os componentes consol
 
 ---
 
-## 16. Progresso Geral
+## 16. Estratégia para as etapas finais
+
+Após a conclusão das fases visuais da versão Vanilla:
+
+```text
+Versão Vanilla completa
+        ↓
+Bootstrap
+        ↓
+comparação e consolidação
+        ↓
+Flask/Jinja
+        ↓
+Template Flask integrado
+        ↓
+aplicação real
+```
+
+A etapa Bootstrap deverá partir do HTML e das estruturas conceituais já consolidadas, substituindo ou complementando classes conforme a responsabilidade de cada componente.
+
+Não está previsto reescrever o projeto inteiro do zero para Bootstrap.
+
+A etapa Flask/Jinja será posterior ao Bootstrap para que a integração dinâmica seja feita sobre uma base visual já consolidada.
+
+---
+
+## 17. Progresso Geral
 
 **60%**
 
@@ -452,3 +486,24 @@ A estimativa considera o peso relativo das fases e o estado efetivo de implement
 O projeto já possui a identidade visual, a fundação, o Layout Base responsivo, o Dashboard e os componentes fundamentais de formulário.
 
 As Fases 8 e 9 permanecem no escopo do projeto, mas continuam fora do denominador do progresso principal.
+
+O progresso principal considera as Fases 0 a 7.
+
+---
+
+## 18. Diretriz de Transição para Aplicações Reais
+
+O Template Flask não é o sistema de negócio final.
+
+Depois da consolidação visual e da integração com Flask/Jinja, ele deverá servir como base para aplicações reais, por exemplo:
+
+```text
+Template Flask
+      ↓
+┌─────┼───────────────┐
+↓     ↓               ↓
+LicenSys   Sistema Financeiro   Sistema Pericial
+```
+
+As páginas e regras de negócio de cada aplicação deverão ser construídas posteriormente sobre essa base.
+

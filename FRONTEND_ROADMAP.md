@@ -54,9 +54,11 @@ Fase 4 → Formulários
 Fase 5 → CRUD
 Fase 6 → Componentes
 Fase 7 → Telas
-Fase 8 → Refatoração e preparação para Flask
-Fase 9 → Bootstrap
+Fase 8 → Bootstrap
+Fase 9 → Consolidação final + Flask/Jinja
 ```
+
+A ordem final foi definida para que o Template seja concluído primeiro em sua implementação visual Vanilla, depois reconstruído/adaptado com Bootstrap e somente então integrado ao Flask/Jinja.
 
 ---
 
@@ -291,48 +293,156 @@ A Fase 5 deverá utilizar os componentes e padrões consolidados nas fases anter
 - estados de erro;
 - estados vazios.
 
----
+### Objetivo arquitetural
 
-# 12. Fase 8 — Refatoração e preparação para Flask
+Concluir a versão Vanilla do Template com páginas compostas e coerentes, utilizando os componentes desenvolvidos nas fases anteriores.
 
-**Status:** ⏳ Planejada
-
-### Escopo
-
-- componentização final;
-- organização final;
-- templates;
-- static;
-- Jinja2;
-- `base.html`;
-- includes;
-- macros;
-- integração com Blueprints;
-- `url_for()`.
-
-**Observação:** permanece no projeto, mas não entra no cálculo do progresso principal.
+Ao final desta fase, a versão visual em HTML5 + CSS3 + JavaScript puro deverá estar suficientemente consolidada para servir de referência para a implementação Bootstrap.
 
 ---
 
-# 13. Fase 9 — Bootstrap
+# 12. Fase 8 — Bootstrap
 
 **Status:** ⏳ Planejada
 
+## Objetivo
+
+Reconstruir/adaptar a versão visual consolidada do Template utilizando Bootstrap 5.3+, sem perder a estrutura conceitual e semântica já validada.
+
+### Estratégia
+
+A implementação partirá da versão Vanilla existente.
+
+O processo será:
+
+```text
+componente Vanilla
+↓
+análise das responsabilidades
+↓
+classes/componentes Bootstrap adequados
+↓
+adaptação do HTML
+↓
+CSS próprio complementar, quando necessário
+↓
+validação
+↓
+comparação com Vanilla
+```
+
 ### Escopo
 
-- reconstrução com Bootstrap 5.3+;
-- comparação com CSS puro;
+- Layout;
 - componentes;
-- abstrações;
-- produtividade;
-- manutenção;
-- CSS próprio × Bootstrap.
+- formulários;
+- tabelas;
+- botões;
+- estados;
+- responsividade;
+- utilitários;
+- componentes Bootstrap pertinentes;
+- comparação de manutenção e produtividade;
+- definição do que continuará como CSS próprio.
 
-**Observação:** permanece no projeto, mas não entra no cálculo do progresso principal.
+### Resultado esperado
+
+Duas implementações comparáveis:
+
+```text
+Template Flask — Vanilla
+        ↕
+Template Flask — Bootstrap
+```
+
+O objetivo não é criar um projeto independente do zero, mas produzir uma segunda implementação do mesmo template.
 
 ---
 
-# 14. Histórico dos principais marcos
+# 13. Fase 9 — Consolidação final + Flask/Jinja
+
+**Status:** ⏳ Planejada
+
+## Objetivo
+
+Consolidar a versão final do Template e transformá-la em uma base efetivamente reutilizável para aplicações Flask.
+
+### Primeira etapa — Consolidação
+
+Antes da integração dinâmica:
+
+- comparar as versões Vanilla e Bootstrap;
+- revisar organização;
+- revisar componentes;
+- definir a versão de referência para os sistemas reais;
+- consolidar padrões;
+- identificar e eliminar inconsistências residuais.
+
+### Segunda etapa — Flask/Jinja
+
+Somente após a consolidação visual:
+
+- `base.html`;
+- herança de templates;
+- `block`;
+- includes;
+- macros quando justificadas;
+- organização de `templates/`;
+- organização de `static/`;
+- `url_for()`;
+- renderização dinâmica;
+- integração com Blueprints;
+- integração de dados nos componentes;
+- formulários e mensagens quando aplicável.
+
+### Resultado esperado
+
+```text
+Template visual consolidado
+        ↓
+Flask/Jinja
+        ↓
+Template Flask integrado
+        ↓
+base reutilizável para aplicações reais
+```
+
+A etapa Flask/Jinja não deverá reabrir decisões visuais já consolidadas sem necessidade técnica.
+
+---
+
+# 14. Transição para aplicações reais
+
+Depois da conclusão da Fase 9, o Template estará preparado para servir como base de sistemas reais.
+
+Fluxo:
+
+```text
+Template Flask
+      ↓
+adaptação ao domínio
+      ↓
+regras de negócio
+      ↓
+dados
+      ↓
+aplicação real
+```
+
+Exemplos de sistemas que poderão utilizar a base:
+
+- LicenSys;
+- Sistema Financeiro;
+- Sistema Pericial;
+- Controle Patrimonial;
+- Controle de Processos;
+- outros sistemas Flask.
+
+O Template não deverá incorporar regras de negócio específicas desses sistemas.
+
+---
+
+# 15. Histórico dos principais marcos
 
 ```text
 Fase 0
@@ -359,7 +469,7 @@ Fase 4
 
 ---
 
-# 15. Próximo marco
+# 16. Próximo marco
 
 **Fase 5 — CRUD**
 
@@ -369,7 +479,7 @@ Objetivo imediato:
 
 ---
 
-# 16. Progresso geral
+# 17. Progresso geral
 
 **60%**
 
@@ -380,3 +490,26 @@ As Fases 8 e 9 continuam no escopo do projeto, mas não participam do denominado
 O percentual não é calculado pela simples quantidade de tarefas ou arquivos concluídos; considera o peso relativo das partes do produto e o estágio efetivo de implementação.
 
 A conclusão da Fase 4 elevou o progresso estimado de 50% para 60%, considerando a relevância dos componentes de formulário e o ciclo completo de implementação, validação e revisão realizado.
+
+---
+
+# 18. Diretriz de ordem das etapas finais
+
+A ordem estabelecida é:
+
+```text
+Fases 5–7
+→ conclusão da versão Vanilla
+
+Fase 8
+→ Bootstrap
+
+Fase 9
+→ consolidação final + Flask/Jinja
+
+Depois
+→ aplicação real
+```
+
+Essa ordem evita integrar Flask/Jinja enquanto a camada visual ainda está em evolução e permite que o Template seja comparado em duas implementações antes de receber a camada dinâmica.
+
